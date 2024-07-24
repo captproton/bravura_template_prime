@@ -3,8 +3,8 @@ require_relative "lib/bravura_template_prime/version"
 Gem::Specification.new do |spec|
   spec.name        = "bravura_template_prime"
   spec.version     = BravuraTemplatePrime::VERSION
-  spec.authors     = ["captproton"]
-  spec.email       = ["carl@wdwhub.net"]
+  spec.authors     = [ "captproton" ]
+  spec.email       = [ "carl@wdwhub.net" ]
   spec.homepage    = "https://github.com/captproton/bravura_template_prime"
   spec.summary     = "Prime template for Bravura blogging platform"
   spec.description = "BravuraTemplatePrime is a sleek and modern template engine for the Bravura blogging platform, offering customizable layouts and styles."

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= get_setting('general.tab_title') %></title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag "bravura_template_prime/application", media: "all" %>
+  <%= javascript_include_tag "bravura_template_prime/application" %>
+</head>
+
+<body>
+  <header>
+    <!-- Add header content -->
+  </header>
+
+  <main>
+    <%= yield %>
+  </main>
+
+  <footer>
+    <!-- Add footer content -->
+  </footer>
+</body>
+</html>
