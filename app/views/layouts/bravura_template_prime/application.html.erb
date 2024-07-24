@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bravura template prime</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= yield :head %>
+
+  <%= stylesheet_link_tag    "bravura_template_prime/application", media: "all" %>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>
