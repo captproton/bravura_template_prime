@@ -18,13 +18,13 @@ gem "rubocop-rails-omakase", require: false
 # gem "debug", ">= 1.0.0"
 
 #  app-specific gems
+gem "bravura_template_base", github: "captproton/bravura_template_base", branch: "develop"
 
 group :development, :test do
-  gem 'rspec-rails', '~> 6.1.3'
-  gem 'factory_bot_rails', '~> 6.4.3'
-  gem 'faker', '~> 3.4.2'
-  gem 'capybara', '~> 3.40.0'
-#   gem 'simplecov', '~> 0.22.0', require: false
-  gem 'shoulda-matchers', '~> 6.2.0', require: false
-  
+  gem "rspec-rails", "~> 6.1.3"
+  gem "factory_bot_rails", "~> 6.4.3"
+  gem "faker", "~> 3.4.2"
+  gem "capybara", "~> 3.40.0"
+  #   gem 'simplecov', '~> 0.22.0', require: false
+  gem "shoulda-matchers", "~> 6.2.0", require: false
 end
