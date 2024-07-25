@@ -2,8 +2,8 @@ module BravuraTemplatePrime
   class Engine < ::Rails::Engine
     isolate_namespace BravuraTemplatePrime
 
-    config.to_prepare do
-      BlogController.include BravuraTemplatePrime::BlogControllerExtensions
+    config.generators do |g|
+      g.test_framework :rspec
     end
   end
 end
