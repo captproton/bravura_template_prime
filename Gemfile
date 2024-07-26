@@ -25,6 +25,9 @@ group :development, :test do
   gem "factory_bot_rails", "~> 6.4.3"
   gem "faker", "~> 3.4.2"
   gem "capybara", "~> 3.40.0"
+  gem "database_cleaner-active_record", "~> 2.2"
+
   #   gem 'simplecov', '~> 0.22.0', require: false
   gem "shoulda-matchers", "~> 6.2.0", require: false
 end
+

@@ -1,4 +1,5 @@
 # spec/rails_helper.rb
+
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../dummy/config/environment', __FILE__)
@@ -7,12 +8,10 @@ require 'rspec/rails'
 require 'bravura_template_base'
 require 'bravura_template_prime'
 require 'bravura_template_prime/engine'
+require 'shoulda-matchers'
 
-
-
-
-# Additional requires
-# ...
+# Load support files
+Dir[BravuraTemplatePrime::Engine.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 begin
@@ -26,4 +25,38 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+
+  # Include engine routes for controller tests
+  config.include BravuraTemplatePrime::Engine.routes.url_helpers
+
+  config.before(:each, type: :controller) do
+    @request.env["ENGINE_ROUTES"] = BravuraTemplatePrime::Engine.routes
+  end
+
+  # Include FactoryBot methods
+  config.include FactoryBot::Syntax::Methods
+
+  # Configure DatabaseCleaner
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
 end
+
+# Configure Shoulda Matchers
+Shoulda::Matchers.configure do |shoulda_config|
+  shoulda_config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
+
+# Configure FactoryBot
+FactoryBot.definition_file_paths << File.join(File.dirname(__FILE__), 'factories')
+FactoryBot.find_definitions

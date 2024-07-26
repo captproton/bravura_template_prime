@@ -1,50 +1,32 @@
+# spec/integration/blog_controller_integration_spec.rb
 require 'rails_helper'
+require_relative '../support/mock_blog_controller'
+require_relative '../support/shared_examples_for_blog_controller'
 
-# Mock the BravuraTemplateBase::ControllerExtensions if it's not available
-unless defined?(BravuraTemplateBase::ControllerExtensions)
-  module BravuraTemplateBase
-    module ControllerExtensions
-      # Add any methods that your controller expects from this module
-      def current_account
-        # Mock implementation
-      end
-
-      def all_settings
-        # Mock implementation
-      end
-
-      # Add other methods as needed
-    end
-  end
-end
-
-RSpec.describe BravuraTemplatePrime::BlogController, type: :controller do
+RSpec.describe BravuraTemplatePrime::MockBlogController, type: :controller do
   routes { BravuraTemplatePrime::Engine.routes }
 
-  controller(BravuraTemplatePrime::BlogController) do
-    include BravuraTemplateBase::ControllerExtensions
+  controller(BravuraTemplatePrime::MockBlogController) do
   end
 
   describe "GET #index" do
     it "renders the index template" do
       get :index
-      expect(response).to render_template(:index)
+      expect(response).to render_template('bravura_template_prime/blog/index')
     end
 
-    it "assigns @posts" do
-      # Assuming you have a way to create test posts
-      posts = [double('Post'), double('Post')]
-      allow(Post).to receive(:all).and_return(posts)
-
-      get :index
-      expect(assigns(:posts)).to eq(posts)
-    end
-
-    it "assigns @presenter" do
+    it "assigns a presenter" do
       get :index
       expect(assigns(:presenter)).to be_a(BravuraTemplatePrime::PresentationAdapter)
     end
-  end
 
-  # Add more tests for other actions as needed
+    it "includes prime-specific data" do
+      get :index
+      expect(assigns(:prime_specific_data)).to eq("This is added by BravuraTemplatePrime")
+    end
+
+    # Add more tests for your engine-specific behavior
+
+    it_behaves_like "a blog controller"
+  end
 end
