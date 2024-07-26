@@ -4,6 +4,11 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../dummy/config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require 'bravura_template_base'
+require 'bravura_template_prime'
+require 'bravura_template_prime/engine'
+
+
 
 
 # Additional requires
