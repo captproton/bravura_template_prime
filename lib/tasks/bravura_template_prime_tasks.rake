@@ -1,4 +1,11 @@
-# desc "Explaining what the task does"
-# task :bravura_template_prime do
-#   # Task goes here
-# end
+require "rake"
+
+begin
+  require "rspec/core/rake_task"
+
+  RSpec::Core::RakeTask.new(:spec)
+
+  task default: :spec
+rescue LoadError
+  # no rspec available
+end
