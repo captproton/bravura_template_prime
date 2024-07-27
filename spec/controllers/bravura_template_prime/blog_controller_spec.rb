@@ -1,3 +1,4 @@
+# spec/controllers/bravura_template_prime/mock_blog_controller_spec.rb
 require 'rails_helper'
 require_relative '../../support/shared_examples_for_blog_controller'
 require_relative '../../support/controllers/bravura_template_prime/mock_blog_controller'
@@ -13,37 +14,34 @@ RSpec.describe BravuraTemplatePrime::MockBlogController, type: :controller do
   end
 
   describe "GET #index" do
+    before { get :index }
+
     it "responds successfully" do
-      get :index
       expect(response).to be_successful
     end
 
-    it "returns a 200 status code" do
-      get :index
-      expect(response).to have_http_status(:ok)
+    it "assigns a presenter" do
+      expect(assigns(:presenter)).to be_a(BravuraTemplatePrime::PresentationAdapter)
     end
 
-    it "assigns @posts" do
-      get :index
-      expect(assigns(:posts)).to be_an(Array)
+    it "includes prime-specific data" do
+      expect(assigns(:prime_specific_data)).to eq("This is added by BravuraTemplatePrime")
     end
   end
 
   describe "GET #show" do
     let(:post_id) { "1" }
+    before { get :show, params: { id: post_id } }
 
     it "responds successfully" do
-      get :show, params: { id: post_id }
       expect(response).to be_successful
     end
 
-    it "returns a 200 status code" do
-      get :show, params: { id: post_id }
-      expect(response).to have_http_status(:ok)
+    it "assigns a presenter" do
+      expect(assigns(:presenter)).to be_a(BravuraTemplatePrime::PresentationAdapter)
     end
 
-    it "assigns @post" do
-      get :show, params: { id: post_id }
+    it "assigns a post" do
       expect(assigns(:post)).to be_present
     end
   end

@@ -29,5 +29,8 @@ group :development, :test do
 
   #   gem 'simplecov', '~> 0.22.0', require: false
   gem "shoulda-matchers", "~> 6.2.0", require: false
+  gem "rails-controller-testing", "~> 1.0"
+
 end
+
 

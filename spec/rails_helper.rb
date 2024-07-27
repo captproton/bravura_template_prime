@@ -9,6 +9,7 @@ require 'bravura_template_base'
 require 'bravura_template_prime'
 require 'bravura_template_prime/engine'
 require 'shoulda-matchers'
+require 'rails-controller-testing'
 
 # Load support files
 Dir[BravuraTemplatePrime::Engine.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
@@ -33,6 +34,13 @@ RSpec.configure do |config|
     @request.env["ENGINE_ROUTES"] = BravuraTemplatePrime::Engine.routes
   end
 
+  config.before(:each) do
+    # Reset registered templates before each test
+    if BravuraTemplateBase.respond_to?(:reset_templates!)
+      BravuraTemplateBase.reset_templates!
+    end
+  end
+
   # Include FactoryBot methods
   config.include FactoryBot::Syntax::Methods
 
@@ -46,6 +54,12 @@ RSpec.configure do |config|
     DatabaseCleaner.cleaning do
       example.run
     end
+  end
+
+  [:controller, :view, :request].each do |type|
+    config.include ::Rails::Controller::Testing::TestProcess, type: type
+    config.include ::Rails::Controller::Testing::TemplateAssertions, type: type
+    config.include ::Rails::Controller::Testing::Integration, type: type
   end
 end
 
