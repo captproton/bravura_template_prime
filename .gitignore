@@ -1,10 +1,68 @@
+# Ignore bundler config and downloaded gems
 /.bundle/
-/doc/
-/log/*.log
-/pkg/
-/tmp/
+/vendor/bundle/
+
+# Ignore all logfiles and tempfiles
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore uploaded files in development
+/storage/*
+!/storage/.keep
+
+# Ignore Byebug command history file
+.byebug_history
+
+# Ignore master key for decrypting credentials
+/config/master.key
+/config/*.key
+
+# Ignore public uploads
+/public/uploads
+
+# Ignore precompiled assets
+/public/assets
+
+# Ignore yarn files
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
+# Ignore dotenv files
+.env*
+
+# Ignore Apple macOS specific files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Ignore RSpec failure tracking file
+spec/examples.txt
+
+# Ignore dummy application files
 /spec/dummy/db/*.sqlite3
 /spec/dummy/db/*.sqlite3-*
 /spec/dummy/log/*.log
 /spec/dummy/storage/
 /spec/dummy/tmp/
+
+# Ignore gem builds
+*.gem
+
+# Ignore documentation
+/doc/
+/rdoc/
+
+# Ignore coverage reports
+/coverage/
+
+# Ignore IDE-specific files
+.idea/
+.vscode/
+
+# Ignore system-specific files
+*~
+.project
+.loadpath

@@ -1,0 +1,6 @@
+<!-- app/views/bravura_template_prime/blog/_post.html.erb -->
+<article class="blog-post">
+  <h2><%= link_to post.title, "#" %></h2>
+  <p><%= post.content %></p>
+  <p>Published on <%= post.published_at.strftime("%B %d, %Y") %> by <%= post.author_name %></p>
+</article>
