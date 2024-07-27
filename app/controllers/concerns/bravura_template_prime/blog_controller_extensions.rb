@@ -3,7 +3,7 @@ module BravuraTemplatePrime
     extend ActiveSupport::Concern
 
     included do
-      before_action :set_prime_specific_data, only: [:index, :show]
+      before_action :set_prime_specific_data, only: [ :index, :show ]
     end
 
     def set_prime_specific_data

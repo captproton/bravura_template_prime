@@ -56,7 +56,7 @@ RSpec.configure do |config|
     end
   end
 
-  [:controller, :view, :request].each do |type|
+  [ :controller, :view, :request ].each do |type|
     config.include ::Rails::Controller::Testing::TestProcess, type: type
     config.include ::Rails::Controller::Testing::TemplateAssertions, type: type
     config.include ::Rails::Controller::Testing::Integration, type: type

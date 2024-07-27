@@ -16,7 +16,7 @@ RSpec.describe "bravura_template_prime/blog/index", type: :view do
 
   context "when there are posts" do
     before do
-      assign(:posts, [post])
+      assign(:posts, [ post ])
     end
 
     it "displays the blog hero title" do
