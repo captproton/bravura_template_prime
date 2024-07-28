@@ -1,6 +1,5 @@
-# spec/views/bravura_template_prime/blog/index.html.erb_spec.rb
 RSpec.describe "bravura_template_prime/blog/index", type: :view do
-  let(:presenter) { instance_double(BravuraTemplatePrime::PresentationAdapter) }
+  let(:prime_presenter) { instance_double(BravuraTemplatePrime::PresentationAdapter) }
   let(:post) { instance_double("Post",
     title: "Sample Post",
     content: "Lorem ipsum",
@@ -9,9 +8,9 @@ RSpec.describe "bravura_template_prime/blog/index", type: :view do
   ) }
 
   before do
-    allow(presenter).to receive(:blog_hero_title).and_return("Welcome to My Blog")
-    allow(presenter).to receive(:blog_hero_description).and_return("A place for my thoughts")
-    assign(:presenter, presenter)
+    allow(prime_presenter).to receive(:blog_hero_title).and_return("Welcome to My Blog")
+    allow(prime_presenter).to receive(:blog_hero_description).and_return("A place for my thoughts")
+    assign(:prime_presenter, prime_presenter)
   end
 
   context "when there are posts" do

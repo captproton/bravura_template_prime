@@ -1,14 +1,19 @@
-<%# app/views/bravura_template_prime/blog/index.html.erb %>
+<!-- app/views/bravura_template_prime/blog/index.html.erb -->
+<h1><%= @prime_presenter.blog_hero_title %></h1>
+<p><%= @prime_presenter.blog_hero_description %></p>
 
-<div class="blog-hero">
-  <h1><%= @presenter.blog_hero_title %></h1>
-  <p><%= @presenter.blog_hero_description %></p>
-</div>
-
-<div class="blog-posts-container">
-  <% if @posts.any? %>
-    <%= render partial: "post", collection: @posts %>
-  <% else %>
-    <p>No posts found.</p>
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <article>
+      <h2><%= post.title %></h2>
+      <p><%= post.content %></p>
+      <p>Published on <%= post.published_at.strftime("%B %d, %Y") %> by <%= post.author_name %></p>
+    </article>
   <% end %>
-</div>
+<% else %>
+  <p>No posts found.</p>
+<% end %>
+
+<% if @prime_specific_data %>
+  <p><%= @prime_specific_data %></p>
+<% end %>

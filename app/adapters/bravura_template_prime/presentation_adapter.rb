@@ -6,7 +6,12 @@ module BravuraTemplatePrime
     end
 
     def get_setting(key)
-      @settings_provider.get_setting(key)
+      if @settings_provider.respond_to?(:get_setting)
+        @settings_provider.get_setting(key)
+      else
+        # Fallback for when we're not in a controller context (like in view specs)
+        "Placeholder for #{key}"
+      end
     end
 
     def blog_hero_title
