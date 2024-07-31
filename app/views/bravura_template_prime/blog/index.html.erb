@@ -1,1 +1,5 @@
-<h1>bravura_temlpate_prime index</h1>
+<%= render "bravura_template_prime/blog/index/section_hero" %>
+<%= render "bravura_template_prime/blog/index/section_articles" %>
+<%# FIXME: needs SettingsService setup %>
+<%= (@design_settings&.blog_theme&.name.to_s.presence || "base") %>
+<%= link_to current_account.name, "/" %>
