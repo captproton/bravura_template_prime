@@ -1,52 +1,55 @@
-require 'rails_helper'
-require_relative '../../support/shared_examples_for_blog_controller'
-require_relative '../../support/controllers/bravura_template_prime/mock_blog_controller'
+# ** FIXME: nota bene: this is part of an older approach to use the bravura_template_base gem to switch templates
+# We are using a different approach now, but this is still here for reference
 
-RSpec.describe BravuraTemplatePrime::MockBlogController, type: :controller do
-  routes { BravuraTemplatePrime::Engine.routes }
+# require 'rails_helper'
+# require_relative '../../support/shared_examples_for_blog_controller'
+# require_relative '../../support/controllers/bravura_template_prime/mock_blog_controller'
 
-  before do
-    BravuraTemplatePrime::Engine.routes.draw do
-      get '/' => 'mock_blog#index', as: :blog_index
-      get '/:id' => 'mock_blog#show', as: :blog_post
-    end
-  end
+# RSpec.describe BravuraTemplatePrime::MockBlogController, type: :controller do
+#   routes { BravuraTemplatePrime::Engine.routes }
 
-  describe "GET #index" do
-    it "responds successfully" do
-      get :index
-      expect(response).to be_successful
-    end
+#   before do
+#     BravuraTemplatePrime::Engine.routes.draw do
+#       get '/' => 'mock_blog#index', as: :blog_index
+#       get '/:id' => 'mock_blog#show', as: :blog_post
+#     end
+#   end
 
-    it "returns a 200 status code" do
-      get :index
-      expect(response).to have_http_status(:ok)
-    end
+#   describe "GET #index" do
+#     it "responds successfully" do
+#       get :index
+#       expect(response).to be_successful
+#     end
 
-    it "assigns @posts" do
-      get :index
-      expect(assigns(:posts)).to be_an(Array)
-    end
-  end
+#     it "returns a 200 status code" do
+#       get :index
+#       expect(response).to have_http_status(:ok)
+#     end
 
-  describe "GET #show" do
-    let(:post_id) { "1" }
+#     it "assigns @posts" do
+#       get :index
+#       expect(assigns(:posts)).to be_an(Array)
+#     end
+#   end
 
-    it "responds successfully" do
-      get :show, params: { id: post_id }
-      expect(response).to be_successful
-    end
+#   describe "GET #show" do
+#     let(:post_id) { "1" }
 
-    it "returns a 200 status code" do
-      get :show, params: { id: post_id }
-      expect(response).to have_http_status(:ok)
-    end
+#     it "responds successfully" do
+#       get :show, params: { id: post_id }
+#       expect(response).to be_successful
+#     end
 
-    it "assigns @post" do
-      get :show, params: { id: post_id }
-      expect(assigns(:post)).to be_present
-    end
-  end
+#     it "returns a 200 status code" do
+#       get :show, params: { id: post_id }
+#       expect(response).to have_http_status(:ok)
+#     end
 
-  it_behaves_like "a blog controller"
-end
+#     it "assigns @post" do
+#       get :show, params: { id: post_id }
+#       expect(assigns(:post)).to be_present
+#     end
+#   end
+
+#   it_behaves_like "a blog controller"
+# end

@@ -1,14 +1,5 @@
-<%# app/views/bravura_template_prime/blog/index.html.erb %>
-
-<div class="blog-hero">
-  <h1><%= @presenter.blog_hero_title %></h1>
-  <p><%= @presenter.blog_hero_description %></p>
-</div>
-
-<div class="blog-posts-container">
-  <% if @posts.any? %>
-    <%= render partial: "post", collection: @posts %>
-  <% else %>
-    <p>No posts found.</p>
-  <% end %>
-</div>
+<%= render "bravura_template_prime/blog/index/section_hero" %>
+<%= render "bravura_template_prime/blog/index/section_articles" %>
+<%# FIXME: needs SettingsService setup %>
+<%= (@design_settings&.blog_theme&.name.to_s.presence || "base") %>
+<%= link_to current_account.name, "/" %>

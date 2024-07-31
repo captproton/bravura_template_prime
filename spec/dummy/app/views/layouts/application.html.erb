@@ -1,22 +1,30 @@
 <!DOCTYPE html>
-<html>
+<%= content_tag :html, dir: "ltr", lang: "en", class: "scroll-smooth antialiased selection:bg-primary-500 selection:text-primary-50", data: { theme: @blog_theme, graytheme: "gray#{@shade_of_gray}", mode: @site_mode } do %>
+
   <head>
-    <title><%= content_for(:title) || "Dummy" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <%# content that is common to all templates goes here in the blog_head %>
+    <%= render partial: "/bravura_template_prime/shared/blog_head", locals: {article: @article, current_account: current_account} %>
+    <!-- Include your common stylesheets, meta tags, etc. here -->
 
-    <%= yield :head %>
-
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
-    <%= stylesheet_link_tag "application" %>
   </head>
+  <body class="overflow-x-hidden bg-white font-sans text-secondary-900 antialiased">
+		<div style="position:fixed;z-index:9999;top:16px;left:16px;right:16px;bottom:16px;pointer-events:none"></div>
+      <!-- Site navigation content goes here -->
+      <%= render partial: "/shared/top_nav" %>
 
-  <body>
-    <%= yield %>
+      <main>
+        <!-- Main content goes here -->
+        <%= yield %>
+        <%= render partial: "/shared/cta" %>
+      </main>
+
+      <footer>
+        <!-- Footer content goes here -->
+        <%= render partial: "/shared/footer" %>
+      </footer>
+    </div>
+    <!-- Include your common JavaScript files, scripts, etc. here -->
+    <%= javascript_include_tag 'application' %>
+    <%=render partial: "/shared/javascript" %>
   </body>
-</html>
+<% end %>

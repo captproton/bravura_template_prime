@@ -1,17 +1,30 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Bravura template prime</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+<%= content_tag :html, dir: "ltr", lang: "en", class: "scroll-smooth antialiased selection:bg-primary-500 selection:text-primary-50", data: { theme: @blog_theme, graytheme: "gray#{@shade_of_gray}", mode: @site_mode } do %>
 
-  <%= yield :head %>
+  <head>
+    <%# content that is common to all templates goes here in the blog_head %>
+    <%= render partial: "/shared/head", locals: {article: @article, current_account: current_account} %>
+    <!-- Include your common stylesheets, meta tags, etc. here -->
 
-  <%= stylesheet_link_tag    "bravura_template_prime/application", media: "all" %>
-</head>
-<body>
+  </head>
+  <body class="overflow-x-hidden bg-white font-sans text-secondary-900 antialiased">
+		<div style="position:fixed;z-index:9999;top:16px;left:16px;right:16px;bottom:16px;pointer-events:none"></div>
+      <!-- Site navigation content goes here -->
+      <%= render partial: "/shared/top_nav" %>
 
-<%= yield %>
+      <main>
+        <!-- Main content goes here -->
+        <%= yield %>
+        <%= render partial: "shared/default/cta" %>
+      </main>
 
-</body>
-</html>
+      <footer>
+        <!-- Footer content goes here -->
+        <%= render partial: "shared/footer" %>
+      </footer>
+    </div>
+    <!-- Include your common JavaScript files, scripts, etc. here -->
+    <%= javascript_include_tag 'application' %>
+    <%=render partial: "shared/javascript" %>
+  </body>
+<% end %>

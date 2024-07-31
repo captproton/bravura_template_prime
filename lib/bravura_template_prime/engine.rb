@@ -1,9 +1,16 @@
+# lib/bravura_template_prime/engine.rb
 module BravuraTemplatePrime
   class Engine < ::Rails::Engine
     isolate_namespace BravuraTemplatePrime
 
-    initializer "bravura_template_prime.register_template" do
-      BravuraTemplateBase.register_template(:bravura_template_prime)
+    # ** FIXME: nota bene: this is part of an older approach to use the bravura_template_base gem to switch templates
+    # We are using a different approach now, but this is still here for reference
+    # initializer "bravura_template_prime.register_template" do
+    #   BravuraTemplateBase.register_template(:bravura_template_prime)
+    # end
+
+    initializer "bravura_template_prime.assets.precompile" do |app|
+      app.config.assets.precompile += %w[ bravura_template_prime/application.css bravura_template_prime/application.js ]
     end
 
     config.generators do |g|
