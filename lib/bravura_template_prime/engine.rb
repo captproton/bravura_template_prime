@@ -6,6 +6,10 @@ module BravuraTemplatePrime
       BravuraTemplateBase.register_template(:bravura_template_prime)
     end
 
+    initializer "bravura_template_prime.assets.precompile" do |app|
+      app.config.assets.precompile += %w( bravura_template_prime/application.css bravura_template_prime/application.js )
+    end
+
     config.generators do |g|
       g.test_framework :rspec
     end
