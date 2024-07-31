@@ -7,19 +7,17 @@
 			<%= render partial: '/bravura_template_prime/blog/index/tag_list', locals: { tags: @tags } %>			<div class="lg:col-span-9">
 				<div class="articles-grid grid grid-cols-1 gap-8 sm:grid-cols-2 lg:gap-y-12 xl:grid-cols-3">
 					<!-- normal article -->
-<%# FIXME: Needs proper path for article_card and def of @articles %>
-					<%#= render partial: '/bravura_template_prime/shared/article_card',
+					<%= render partial: '/shared/article_card',
 						collection: @articles,
 						as: :article %>
 
 				</div>
 				<hr class="mt-12 border-secondary-200" />
-				<%# FIXME: Needs proper  def of @pagy %>
-				<%# if @pagy.pages > 1 %>
+				<% if @pagy.pages > 1 %>
 					<div class="my-6 flex items-center justify-center">
-						<%#== pagy_nav(@pagy) %>
+						<%== pagy_nav(@pagy) %>
         			</div>
-      			<%# end %>
+      			<% end %>
 			</div>
 		</div>
 	</div>
