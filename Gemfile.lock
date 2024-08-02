@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bravura_template_prime (0.1.0)
+    bravura_template_prime (0.2.0)
       bravura_template_base (~> 0.1.0)
       rails (>= 7.1.1)
 
