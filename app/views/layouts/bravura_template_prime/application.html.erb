@@ -1,30 +1,18 @@
+<%# app/views/layouts/bravura_template_prime/application.html.erb %>
 <!DOCTYPE html>
 <%= content_tag :html, dir: "ltr", lang: "en", class: "scroll-smooth antialiased selection:bg-primary-500 selection:text-primary-50", data: { theme: @blog_theme, graytheme: "gray#{@shade_of_gray}", mode: @site_mode } do %>
-
   <head>
-    <%# content that is common to all templates goes here in the blog_head %>
-    <%= render partial: "/shared/head", locals: {article: @article, current_account: current_account} %>
-    <!-- Include your common stylesheets, meta tags, etc. here -->
-
+    <%= render partial: "bravura_template_prime/shared/head" %>
   </head>
   <body class="overflow-x-hidden bg-white font-sans text-secondary-900 antialiased">
-		<div style="position:fixed;z-index:9999;top:16px;left:16px;right:16px;bottom:16px;pointer-events:none"></div>
-      <!-- Site navigation content goes here -->
-      <%= render partial: "/shared/top_nav" %>
-
-      <main>
-        <!-- Main content goes here -->
-        <%= yield %>
-        <%= render partial: "shared/default/cta" %>
-      </main>
-
-      <footer>
-        <!-- Footer content goes here -->
-        <%= render partial: "shared/footer" %>
-      </footer>
-    </div>
-    <!-- Include your common JavaScript files, scripts, etc. here -->
-    <%= javascript_include_tag 'application' %>
-    <%=render partial: "shared/javascript" %>
+    <div style="position:fixed;z-index:9999;top:16px;left:16px;right:16px;bottom:16px;pointer-events:none"></div>
+    <%= render partial: "bravura_template_prime/shared/top_nav" %>
+    <main>
+      <%= yield %>
+      <%= render partial: "bravura_template_prime/shared/cta" %>
+    </main>
+    <%= render partial: "bravura_template_prime/shared/footer" %>
+    <%= javascript_include_tag "bravura_template_prime/application", "data-turbo-track": "reload", defer: true %>
+    <%= render partial: "bravura_template_prime/shared/javascript" %>
   </body>
 <% end %>

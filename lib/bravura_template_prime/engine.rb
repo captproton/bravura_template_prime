@@ -13,10 +13,18 @@ module BravuraTemplatePrime
       app.config.assets.precompile += %w[ bravura_template_prime/application.css bravura_template_prime/application.js ]
     end
 
+    initializer "bravura_template_prime.apply_decorators" do
+      ActiveSupport.on_load(:action_controller) do
+        if defined?(::BlogController)
+          ::BlogController.prepend BravuraTemplatePrime::BlogControllerDecorator
+        end
+      end
+    end
+
     config.generators do |g|
       g.test_framework :rspec
     end
 
-    config.autoload_paths << File.expand_path("../../app/controllers", __dir__)
+    config.autoload_paths << root.join("app")
   end
 end
