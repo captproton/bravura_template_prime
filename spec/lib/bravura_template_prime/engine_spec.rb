@@ -16,5 +16,22 @@ RSpec.describe BravuraTemplatePrime::Engine do
     #   # Simulate engine initialization
     #   BravuraTemplatePrime::Engine.initializers.select { |i| i.name == "bravura_template_prime.register_template" }.each(&:run)
     # end
+
+    it "precompiles assets" do
+      expect(Rails.application.config.assets.precompile).to include(
+        "bravura_template_prime/application.css",
+        "bravura_template_prime/application.js"
+      )
+    end
+
+    it "sets up RSpec as the test framework" do
+      expect(BravuraTemplatePrime::Engine.config.generators.options[:rails][:test_framework]).to eq :rspec
+    end
+
+    it "sets up autoload paths" do
+      expect(BravuraTemplatePrime::Engine.config.autoload_paths).to include(
+        BravuraTemplatePrime::Engine.root.join("app")
+      )
+    end
   end
 end

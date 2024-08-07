@@ -1,10 +1,8 @@
-# app/decorators/controllers/blog_controller_decorator.rb
+# engines/bravura_template_prime/app/decorators/controllers/blog_controller_decorator.rb
 
-module BravuraTemplatePrime
-  module BlogControllerDecorator
-    def self.prepended(base)
-      base.include BravuraTemplatePrime::BlogControllerConcern
-    end
+Rails.application.config.to_prepare do
+  BlogController.class_eval do
+    include BravuraTemplatePrime::BlogControllerConcern
 
     def index
       super
@@ -26,12 +24,5 @@ module BravuraTemplatePrime
       super
       render_with_strategy(:archives)
     end
-  end
-end
-
-# This will apply the decorator only when BlogController is defined
-ActiveSupport.on_load(:action_controller) do
-  if defined?(BlogController)
-    BlogController.prepend BravuraTemplatePrime::BlogControllerDecorator
   end
 end

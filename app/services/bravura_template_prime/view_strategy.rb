@@ -1,13 +1,15 @@
+# app/presenters/bravura_template_base/base_presenter.rb
+
 module BravuraTemplatePrime
   class ViewStrategy < BravuraTemplateBase::BaseViewStrategy
     def template_for(action)
-      if @settings.design.some_prime_specific_setting
-        "bravura_template_prime/custom/#{action}"
-      else
-        super
-      end
+      "bravura_template_prime/#{action}"
     end
 
-    # Override other methods as needed for Prime-specific behavior
+    def layout
+      "bravura_template_prime/application"
+    end
+
+    # Other Prime-specific view strategy methods
   end
 end
