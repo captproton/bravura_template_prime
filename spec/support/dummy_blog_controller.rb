@@ -1,5 +1,8 @@
+# spec/support/dummy_blog_controller.rb
 class BlogController < ApplicationController
-  include BravuraTemplatePrime::BlogControllerConcern
+  include BravuraTemplateBase::BlogControllerConcern
+  include BravuraTemplatePrime::BlogControllerConcern if defined?(BravuraTemplatePrime::BlogControllerConcern)
+
 
   def index
     @general_blog_hero_title = @presenter.get_setting("general.blog_hero_title")
