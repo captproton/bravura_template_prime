@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/captproton/bravura_template_base.git
-  revision: 902851d0ffba516a000e7038239462096a5e4792
+  revision: 2ce4d1c505e408df02cb6c1ce9c7f38716e4ed05
   branch: feature/get_setting_20240807
   specs:
     bravura_template_base (0.1.7)
