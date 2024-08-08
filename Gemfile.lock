@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/captproton/bravura_template_base.git
-  revision: ee729af23582c8d6200e799e48c85db81fa96882
+  revision: cdcded74647e0c16b90f4e9dce827862cb99ce2b
   branch: feature/constants_in_prime_index
   specs:
     bravura_template_base (0.1.7)
