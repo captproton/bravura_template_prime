@@ -1,3 +1,4 @@
+<%# app/views/bravura_template_prime/blog/index/_section_articles.html.erb %>
 <%= render partial: '/bravura_template_prime/blog/index/featured_articles', locals: { articles: @featured_articles } if @featured_articles.present?
 %> 
 <section id="all-posts" class="normal-articles-list bg-white py-12 sm:py-16 lg:py-20">
@@ -13,11 +14,11 @@
 
 				</div>
 				<hr class="mt-12 border-secondary-200" />
-				<% if @pagy.pages > 1 %>
+				<%# if @pagy.pages > 1 %>
 					<div class="my-6 flex items-center justify-center">
-						<%== pagy_nav(@pagy) %>
+						<%#= pagy_nav(@pagy) %>
         			</div>
-      			<% end %>
+      			<%# end %>
 			</div>
 		</div>
 	</div>

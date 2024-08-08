@@ -9,14 +9,29 @@ module BravuraTemplatePrime
     #   BravuraTemplateBase.register_template(:bravura_template_prime)
     # end
 
+    # Asset precompilation
     initializer "bravura_template_prime.assets.precompile" do |app|
       app.config.assets.precompile += %w[ bravura_template_prime/application.css bravura_template_prime/application.js ]
     end
 
+    # # Load decorators
+    # config.to_prepare do
+    #   Dir.glob(Engine.root.join("app/decorators/**/*_decorator*.rb")).each do |c|
+    #     require_dependency(c)
+    #   end
+    # end
+
+    # Configure generators
     config.generators do |g|
       g.test_framework :rspec
     end
 
-    config.autoload_paths << File.expand_path("../../app/controllers", __dir__)
+    # Set up autoload paths
+    config.autoload_paths << root.join("app")
+
+    # Initialize BravuraTemplatePrime-specific configurations
+    initializer "bravura_template_prime.configurations" do
+      # Add any BravuraTemplatePrime-specific configurations here
+    end
   end
 end

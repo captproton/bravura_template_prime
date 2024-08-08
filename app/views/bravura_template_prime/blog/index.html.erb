@@ -1,5 +1,6 @@
+<%# app/views/bravura_template_prime/blog/index.html.erb %>
 <%= render "bravura_template_prime/blog/index/section_hero" %>
 <%= render "bravura_template_prime/blog/index/section_articles" %>
 <%# FIXME: needs SettingsService setup %>
-<%= (@design_settings&.blog_theme&.name.to_s.presence || "base") %>
-<%= link_to current_account.name, "/" %>
+<%= @presenter.get_setting("general.blog_hero_title") %>
+<%= link_to(current_account&.name || "Home", "/") %>
