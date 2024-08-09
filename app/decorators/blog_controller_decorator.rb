@@ -1,4 +1,4 @@
-# app/decorators/controllers/blog_controller_decorator.rb
+# app/decorators/blog_controller_decorator.rb
 module Controllers
   class BlogControllerDecorator
     # This is a decorator for the BlogController
