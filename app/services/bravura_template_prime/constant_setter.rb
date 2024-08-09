@@ -46,21 +46,21 @@ module BravuraTemplatePrime
     end
 
     def set_prime_site_mode
-      site_mode_id = @presenter.get_setting("design.prime_site_mode")
+      site_mode_id = @presenter.get("design.prime_site_mode")
       site_mode = find_record(SiteMode, site_mode_id)
       set_instance_variable("@prime_site_mode", site_mode)
       set_instance_variable("@prime_site_mode_theme", site_mode&.site_theme || "system")
     end
 
     def set_prime_shade_of_gray
-      shade_of_gray_id = @presenter.get_setting("design.prime_shades_of_gray_id")
+      shade_of_gray_id = @presenter.get("design.prime_shades_of_gray_id")
       shade_of_gray = find_record(ShadesOfGray, shade_of_gray_id)
       set_instance_variable("@prime_shade_of_gray", shade_of_gray)
       set_instance_variable("@prime_shade_of_gray_name", shade_of_gray&.name&.capitalize || "Normal")
     end
 
     def set_prime_button_style
-      button_style_id = @presenter.get_setting("design.prime_button_style_id")
+      button_style_id = @presenter.get("design.prime_button_style_id")
       button_style = find_record(ButtonStyle, button_style_id)
       button_style_name = button_style&.name || "normal"
       set_instance_variable("@prime_button_radius", set_prime_button_radius(button_style_name))
@@ -76,14 +76,14 @@ module BravuraTemplatePrime
     end
 
     def set_prime_navigation_bar
-      navigation_bar_id = @presenter.get_setting("design.prime_navigation_bar_id")
+      navigation_bar_id = @presenter.get("design.prime_navigation_bar_id")
       navigation_bar = find_record(NavigationBar, navigation_bar_id)
       set_instance_variable("@prime_navigation_bar", navigation_bar)
       set_instance_variable("@prime_navigation_bar_name", navigation_bar&.name || "center")
     end
 
     def set_instance_variable(var_name, setting_key)
-      @view_context.instance_variable_set(var_name, @presenter.get_setting(setting_key))
+      @view_context.instance_variable_set(var_name, @presenter.get(setting_key))
     end
 
     def find_record(model, id)
