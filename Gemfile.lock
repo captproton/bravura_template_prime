@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/captproton/bravura_template_base.git
-  revision: d47f01d8825c6ce0414b5878afb83c93e7bc6d44
+  revision: 1fb6a1b7efe9ba70ada9fb8a2034ef7af4d2409d
   branch: develop
   specs:
     bravura_template_base (0.1.8)
@@ -9,7 +9,7 @@ GIT
 PATH
   remote: .
   specs:
-    bravura_template_prime (0.2.1)
+    bravura_template_prime (0.2.2)
       bravura_template_base (~> 0.1.0)
       rails (>= 7.1.1)
 
