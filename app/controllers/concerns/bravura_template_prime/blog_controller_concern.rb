@@ -1,4 +1,4 @@
-# engines/bravura_template_prime/app/controllers/concerns/bravura_template_prime/blog_controller_concern.rb
+# app/controllers/concerns/bravura_template_prime/blog_controller_concern.rb
 
 module BravuraTemplatePrime
   module BlogControllerConcern
@@ -35,7 +35,9 @@ module BravuraTemplatePrime
     end
 
     def set_prime_publication_constants
-      BravuraTemplatePrime::ConstantSetter.new(@presenter, view_context).set_all
+      setter = BravuraTemplatePrime::ConstantSetter.new(@presenter, view_context)
+      Rails.logger.debug("Using view_context: #{view_context.object_id}")
+      setter.set_all
     end
 
     # Add more Prime-specific methods as needed

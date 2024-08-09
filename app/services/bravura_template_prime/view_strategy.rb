@@ -1,9 +1,9 @@
-# app/presenters/bravura_template_base/base_presenter.rb
+# app/services/bravura_template_prime/view_strategy.rb
 
 module BravuraTemplatePrime
   class ViewStrategy < BravuraTemplateBase::BaseViewStrategy
     def template_for(action)
-      "bravura_template_prime/#{action}"
+      "bravura_template_prime/blog/#{action}"
     end
 
     def layout
