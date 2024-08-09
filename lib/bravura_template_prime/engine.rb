@@ -14,17 +14,17 @@ module BravuraTemplatePrime
       app.config.assets.precompile += %w[ bravura_template_prime/application.css bravura_template_prime/application.js ]
     end
 
+
     # Configure generators
     config.generators do |g|
       g.test_framework :rspec
     end
 
     # Set up autoload paths
-    initializer "bravura_template_prime.set_autoload_paths" do |app|
-      app.config.autoload_paths << root.join("app")
-      app.config.autoload_paths << root.join("app", "decorators")
-      app.config.autoload_paths << root.join("app", "decorators", "controllers")
-    end
+    config.autoload_paths << root.join("app")
+    # Add the decorators directory to the autoload paths
+    config.autoload_paths << config.root.join("app", "decorators")
+    config.autoload_paths << config.root.join("app", "decorators", "controllers")
 
     # Initialize BravuraTemplatePrime-specific configurations
     initializer "bravura_template_prime.configurations" do
