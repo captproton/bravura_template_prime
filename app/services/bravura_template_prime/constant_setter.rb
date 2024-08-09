@@ -83,7 +83,9 @@ module BravuraTemplatePrime
     end
 
     def set_instance_variable(var_name, setting_key)
-      @view_context.instance_variable_set(var_name, @presenter.get(setting_key))
+      value = @presenter.get(setting_key)
+      Rails.logger.debug("Setting #{var_name} to #{value.inspect}")
+      @view_context.instance_variable_set(var_name, value)
     end
 
     def find_record(model, id)

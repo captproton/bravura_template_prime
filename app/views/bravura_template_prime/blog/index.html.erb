@@ -1,6 +1,12 @@
 <%# app/views/bravura_template_prime/blog/index.html.erb %>
-<%= render "bravura_template_prime/blog/index/section_hero" %>
-<%= render "bravura_template_prime/blog/index/section_articles" %>
+<h1>Blog Index Dad</h1>
+
+<%#= render "bravura_template_prime/blog/index/section_hero" %>
+<%#= render "bravura_template_prime/blog/index/section_articles" %>
 <%# FIXME: needs SettingsService setup %>
-<%= @presenter.get_setting("general.blog_hero_title") %>
+<%= @presenter.get("general.blog_hero_title") %>
+<br />
+<br />
+<%= "meta_title #{@meta_title.inspect}"%><br />
+<h2>now is the time</h2>
 <%= link_to(current_account&.name || "Home", "/") %>
