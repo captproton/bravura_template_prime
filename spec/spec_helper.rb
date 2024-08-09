@@ -1,5 +1,3 @@
-# spec/spec_helper.rb
-
 require 'bundler/setup'
 Bundler.setup
 
@@ -8,6 +6,14 @@ ENV['RAILS_ENV'] = 'test'
 require File.expand_path('../dummy/config/environment.rb', __FILE__)
 require 'rspec/rails'
 require 'shoulda-matchers'
+require 'factory_bot_rails'
+require 'database_cleaner/active_record'
+
+# Require BravuraTemplateBase
+require 'bravura_template_base'
+
+# Require BravuraTemplatePrime
+require 'bravura_template_prime'
 
 # Load support files
 Dir[File.join(File.dirname(__FILE__), 'support', '**', '*.rb')].each { |f| require f }
@@ -26,9 +32,6 @@ RSpec.configure do |config|
   # Enable filtering by example metadata
   config.filter_run_when_matching :focus
 
-  # Persist example state
-  config.example_status_persistence_file_path = "spec/examples.txt"
-
   # Disable monkey patching
   config.disable_monkey_patching!
 
@@ -36,9 +39,6 @@ RSpec.configure do |config|
   if config.files_to_run.one?
     config.default_formatter = "doc"
   end
-
-  # Profile slow examples
-  config.profile_examples = 10
 
   # Run specs in random order
   config.order = :random
@@ -48,6 +48,9 @@ RSpec.configure do |config|
 
   # Include FactoryBot methods
   config.include FactoryBot::Syntax::Methods
+
+  # Include BravuraTemplateBase::BlogControllerConcern in controller specs
+  config.include BravuraTemplateBase::BlogControllerConcern, type: :controller
 
   # Configure DatabaseCleaner
   config.before(:suite) do
@@ -62,13 +65,15 @@ RSpec.configure do |config|
   end
 end
 
-  # Configure Shoulda Matchers
-  Shoulda::Matchers.configure do |shoulda_config|
-    shoulda_config.integrate do |with|
-      with.test_framework :rspec
-      with.library :rails
-    end
+# Configure Shoulda Matchers
+Shoulda::Matchers.configure do |shoulda_config|
+  shoulda_config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
   end
-# Configure FactoryBot
-FactoryBot.definition_file_paths << File.join(File.dirname(__FILE__), 'factories')
-FactoryBot.find_definitions
+end
+
+# Ensure that the dummy app's routes are loaded
+Rails.application.routes.draw do
+  mount BravuraTemplatePrime::Engine => "/bravura_template_prime"
+end

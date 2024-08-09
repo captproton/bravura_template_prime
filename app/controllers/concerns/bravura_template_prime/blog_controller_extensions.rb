@@ -8,15 +8,14 @@ module BravuraTemplatePrime
 
     def set_prime_specific_data
       @prime_presenter = BravuraTemplatePrime::PresentationAdapter.new(self)
+      @prime_specific_data = "This is added by BravuraTemplatePrime"
     end
 
-    # You can override or extend existing actions
     def index
       super # Call the original method
       @prime_specific_data = "This is added by BravuraTemplatePrime"
     end
 
-    # You can add new methods specific to this template
     def prime_specific_method
       # Some functionality specific to BravuraTemplatePrime
     end
