@@ -1,4 +1,5 @@
-# engines/bravura_template_prime/app/presenters/bravura_template_prime/presenter.rb
+# app/presenters/bravura_template_prime/presenter.rb
+# app/presenters/bravura_template_prime/presenter.rb
 
 module BravuraTemplatePrime
   class Presenter < BravuraTemplateBase::BasePresenter
