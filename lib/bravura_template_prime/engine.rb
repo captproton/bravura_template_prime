@@ -26,8 +26,8 @@ module BravuraTemplatePrime
     # Set up autoload paths
     config.autoload_paths << root.join("app")
     # Add the decorators directory to the autoload paths
-    config.autoload_paths << config.root.join("app", "decorators")
-    config.autoload_paths << config.root.join("app", "decorators", "controllers")
+    config.autoload_paths += %W[#{config.root}/app/decorators]
+    config.autoload_paths += %W[#{config.root}/app/decorators/controllers]
 
     # Initialize BravuraTemplatePrime-specific configurations
     initializer "bravura_template_prime.configurations" do
