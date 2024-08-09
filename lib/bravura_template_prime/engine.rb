@@ -14,12 +14,6 @@ module BravuraTemplatePrime
       app.config.assets.precompile += %w[ bravura_template_prime/application.css bravura_template_prime/application.js ]
     end
 
-    # # Load decorators
-    # config.to_prepare do
-    #   Dir.glob(Engine.root.join("app/decorators/**/*_decorator*.rb")).each do |c|
-    #     require_dependency(c)
-    #   end
-    # end
 
     # Configure generators
     config.generators do |g|
