@@ -12,7 +12,7 @@ module BravuraTemplatePrime
     # Override or extend base methods as needed
     def index
       super
-      @prime_featured_posts = Post.prime_featured.limit(prime_featured_post_limit)
+      # @prime_featured_posts = Post.prime_featured.limit(prime_featured_post_limit)
     end
 
     private
