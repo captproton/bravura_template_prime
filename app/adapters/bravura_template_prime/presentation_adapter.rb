@@ -8,7 +8,7 @@ module BravuraTemplatePrime
     end
 
     def get_setting(key)
-      @settings_provider.get_setting(key)
+      @settings_provider.get(key)
     rescue NoMethodError
       # Fallback for when we're not in a controller context (like in view specs)
       "Placeholder for #{key}"

@@ -23,15 +23,15 @@ module BravuraTemplatePrime
     end
 
     def determine_prime_theme
-      get_setting("design.prime_theme") || "default"
+      get("design.prime_theme") || "default"
     end
 
     def determine_prime_layout
-      get_setting("design.prime_layout") || "standard"
+      get("design.prime_layout") || "standard"
     end
 
     def prime_featured_post_limit
-      get_setting("feature.prime_featured_post_limit") || 5
+      get("feature.prime_featured_post_limit") || 5
     end
 
     def set_prime_publication_constants
