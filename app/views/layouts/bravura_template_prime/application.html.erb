@@ -1,38 +1,23 @@
-<%# app/views/layouts/bravura_template_prime/application.html.erb %>
-
 <!DOCTYPE html>
-<%= content_tag :html, dir: "ltr", lang: "en", class: "scroll-smooth antialiased selection:bg-primary-500 selection:text-primary-50", data: { theme: @blog_theme, graytheme: "gray#{@shade_of_gray}", mode: @site_mode } do %>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= yield(:title) || "Bravura Blog" %></title>
+  <title>BravuraTemplatePrime</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+
   <%= stylesheet_link_tag "bravura_template_prime/application", media: "all" %>
   <%= javascript_include_tag "bravura_template_prime/application", defer: true %>
-    <%= render "bravura_template_prime/shared/head"  %>
-
 </head>
-  <body class="overflow-x-hidden bg-white font-sans text-secondary-900 antialiased">
-		<div style="position:fixed;z-index:9999;top:16px;left:16px;right:16px;bottom:16px;pointer-events:none"></div>
-      <!-- Site navigation content goes here -->
-      <%= render partial: "bravura_template_prime/shared/top_nav" %>
+<body class="flex min-h-screen flex-col justify-between">
+  <%= render 'bravura_template_prime/shared/header' %>
 
-      <main>
-        <!-- Main content goes here -->
-        <%= yield %>
-        <%= render partial: "bravura_template_prime/shared/default/cta" %>
-      </main>
+  <main class="main-wrapper flex-1" role="main">
+    <%= yield %>
+  </main>
 
-      <footer>
-        <!-- Footer content goes here -->
-        <%= render partial: "shared/footer" %>
-      </footer>
-    </div>
-    <!-- Include your common JavaScript files, scripts, etc. here -->
-    <%= javascript_include_tag 'application' %>
-    <%=render partial: "bravura_template_prime/shared/javascript" %>
-  </body>
-<%# end html content_tag %>
-<% end %>
+  <%= render 'bravura_template_prime/shared/footer' %>
+</body>
+</html>
