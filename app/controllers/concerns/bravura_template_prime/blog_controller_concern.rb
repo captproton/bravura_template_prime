@@ -3,7 +3,7 @@
 module BravuraTemplatePrime
   module BlogControllerConcern
     extend ActiveSupport::Concern
-# FIXME: the methods using get() are not working
+    # FIXME: the methods using get() are not working
     included do
       # before_action :set_prime_specific_variables
       # before_action :set_prime_publication_constants
