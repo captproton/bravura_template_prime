@@ -1,7 +1,7 @@
 <%# app/views/layouts/bravura_template_prime/application.html.erb %>
 
 <!DOCTYPE html>
-<html lang="<%= I18n.locale %>">
+<%= content_tag :html, dir: "ltr", lang: "en", class: "scroll-smooth antialiased selection:bg-primary-500 selection:text-primary-50", data: { theme: @blog_theme, graytheme: "gray#{@shade_of_gray}", mode: @site_mode } do %>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,18 +11,28 @@
 
   <%= stylesheet_link_tag "bravura_template_prime/application", media: "all" %>
   <%= javascript_include_tag "bravura_template_prime/application", defer: true %>
+    <%= render "bravura_template_prime/shared/head"  %>
+
 </head>
-<body>
-  <header>
-    <!-- Add header content -->
-  </header>
+  <body class="overflow-x-hidden bg-white font-sans text-secondary-900 antialiased">
+		<div style="position:fixed;z-index:9999;top:16px;left:16px;right:16px;bottom:16px;pointer-events:none"></div>
+      <!-- Site navigation content goes here -->
+      <%= render partial: "bravura_template_prime/shared/top_nav" %>
 
-  <main>
-    <%= yield %>
-  </main>
+      <main>
+        <!-- Main content goes here -->
+        <%= yield %>
+        <%= render partial: "bravura_template_prime/shared/default/cta" %>
+      </main>
 
-  <footer>
-    <!-- Add footer content -->
-  </footer>
-</body>
-</html>
+      <footer>
+        <!-- Footer content goes here -->
+        <%= render partial: "shared/footer" %>
+      </footer>
+    </div>
+    <!-- Include your common JavaScript files, scripts, etc. here -->
+    <%= javascript_include_tag 'application' %>
+    <%=render partial: "bravura_template_prime/shared/javascript" %>
+  </body>
+<%# end html content_tag %>
+<% end %>
