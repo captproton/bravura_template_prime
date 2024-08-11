@@ -15,6 +15,11 @@ module BravuraTemplatePrime
       # @prime_featured_posts = Post.prime_featured.limit(prime_featured_post_limit)
     end
 
+    def show
+      super
+      # @prime_featured_posts = Post.prime_featured.limit(prime_featured_post_limit)
+    end
+
     private
 
     # def set_prime_specific_variables

@@ -1,5 +1,54 @@
-<%# app/views/bravura_template_prime/blog/show.html.erb %>
-<h1>I am the blog show page</h1>
-<%#= render "bravura_template_prime/blog/show/section_hero" %>
-<%#= render "bravura_template_prime/blog/show/section_article_content" %>
-<%#= render "bravura_template_prime/blog/show/section_related_articles" %>
+<section class="bg-secondary-50 py-12 sm:py-16 lg:py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mx-auto text-center">
+      <%= render 'bravura_template_prime/shared/breadcrumbs' %>
+
+      <h1 class="current-post-title text-3xl font-bold tracking-tight text-secondary-900 mt-8 sm:text-4xl lg:text-5xl">
+        <%= @post.title %>
+      </h1>
+
+      <p class="mt-4 text-xl text-secondary-600">
+        <%= @post.excerpt %>
+      </p>
+
+      <%= render 'bravura_template_prime/blog/post_meta', post: @post %>
+    </div>
+  </div>
+</section>
+
+<section class="current-post-cover bg-white mt-12 sm:mt-16 lg:mt-20">
+  <div class="relative">
+    <div class="absolute h-1/3 bg-secondary-50 inset-0"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="article-cover-wrapper relative">
+        <div class="absolute rotate-180 opacity-30 blur-lg bg-conic-gradient -inset-1" style="filter:blur(16px)"></div>
+        <div class="article-cover aspect-w-16 aspect-h-8 relative overflow-hidden rounded-lg">
+            <%# FIXME: is cover_image_url known as something else? %>
+          <%#= image_tag @post.cover_image_url, class: "h-full w-full object-cover", alt: @post.title %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="normal-post-content bg-white py-12 sm:py-16 lg:py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 items-start gap-y-12 gap-x-16 lg:grid-cols-12">
+      <%= render 'bravura_template_prime/blog/table_of_contents' %>
+
+      <div class="lg:col-span-9">
+        <div class="prose prose-lg prose-primary">
+          <%= @post.body_copy %>
+        </div>
+
+        <%= render 'bravura_template_prime/blog/author_bio', author: @post.author %>
+
+        <%= render 'bravura_template_prime/shared/cta_button' %>
+      </div>
+    </div>
+  </div>
+</section>
+<%# FIXME: this is not using the related_posts scope %>
+<%= render 'bravura_template_prime/blog/related_posts', related_posts: @posts %>
+
+<%= render 'bravura_template_prime/shared/newsletter' %>

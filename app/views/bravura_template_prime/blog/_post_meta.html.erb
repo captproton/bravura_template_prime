@@ -1,0 +1,18 @@
+<div class="flex flex-wrap items-center justify-center gap-3 mt-8">
+  <div class="text-sm font-medium">
+    <div class="current-post-author flex items-center">
+        <%# FIXME: image_tag needs  post.author.avatar_url to work %>
+      <%#= image_tag post.author.avatar_url, class: "h-8 w-8 mr-2 rounded-full", alt: post.author.name %>
+      <span><%= link_to post.author.name, author_path(post.author) %></span>
+    </div>
+  </div>
+  <span class="text-secondary-500">•</span>
+  <time datetime="<%= post.published_at.iso8601 %>" class="text-secondary-500"><%= post.published_at.strftime("%b %-d, %Y") %></time>
+  <span class="text-secondary-500">•</span>
+  <div class="current-post-tags flex items-center justify-center space-x-2">
+    <% post.tags.each do |tag| %>
+        <%# FIXME: tag_path(tag) doesn't work %>
+      <%#= link_to tag.name, tag_path(tag), class: "inline-flex items-center bg-secondary-100 text-xs font-bold text-secondary-500 transition-all duration-200 rounded-full px-2.5 py-0.5 hover:bg-secondary-200 hover:text-secondary-900" %>
+    <% end %>
+  </div>
+</div>
