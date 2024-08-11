@@ -5,46 +5,40 @@
     </div>
 
     <div class="grid max-w-md grid-cols-1 gap-x-8 gap-y-12 mx-auto mt-12 lg:max-w-none lg:grid-cols-3">
-        <%# FIXME: this is not scoped properly %>
-      <%# related_posts.each do |post| %>
-      <% @posts.each do |post| %>
-        <div class="normal-article group relative">
-          <%= link_to blog_path(post), class: "article-cover aspect-w-16 aspect-h-8 block overflow-hidden bg-secondary-200 rounded-lg", 'umami-event': "Clicked Link: #{blog_path(post)}", 'umami-href': blog_path(post) do %>
-            <%# FIXME: is post.cover_image_url correct? %>
-            <%#= image_tag post.cover_image_url, class: "h-full w-full object-cover transition-all duration-100 group-hover:opacity-75", alt: post.title %>
-          <% end %>
-
-          <div class="mt-6">
-            <div class="flex flex-wrap items-center space-x-2">
-              <div class="article-author flex items-center">
-                <div class="flex-shrink-0">
-                  <%= link_to author_path(post.author), 'umami-event': "Clicked Link: #{author_path(post.author)}", 'umami-href': author_path(post.author) do %>
-                    <%# FIXME: is post.author.avatar_url correct %>
-                    <%# <%= image_tag post.author.avatar_url, class: "h-5 w-5 mr-2 rounded-full", alt: post.author.name %> %>
-                  <% end %>
-                </div>
-                <div>
-                  <%= link_to post.author.name, author_path(post.author), 'umami-event': "Clicked Link: #{author_path(post.author)}", 'umami-href': author_path(post.author) %>
-                </div>
-              </div>
-              <span>/</span>
-              <time datetime="<%= post.published_at.iso8601 %>"><%= post.published_at.strftime("%b %-d, %Y") %></time>
-            </div>
-
-            <%= link_to blog_path(post), class: "block mt-4", 'umami-event': "Clicked Link: #{blog_path(post)}", 'umami-href': blog_path(post) do %>
-              <h3 class="article-title text-xl font-bold tracking-tight text-secondary-900"><%= post.title %></h3>
+      <% if @post.related_posts.any? %>
+        <% @post.related_posts.each do |related_post| %>
+          <div class="normal-article group relative">
+            <%= link_to blog_path(related_post), class: "article-cover aspect-w-16 aspect-h-8 block overflow-hidden bg-secondary-200 rounded-lg", 'umami-event': "Clicked Link: #{blog_path(related_post)}", 'umami-href': blog_path(related_post) do %>
+              <%# FIXME: is post.cover_image_url correct? %>
+              <%#= image_tag related_post.cover_image_url, class: "h-full w-full object-cover transition-all duration-100 group-hover:opacity-75", alt: related_post.title %>
             <% end %>
+            <div class="mt-6">
+              <div class="flex flex-wrap items-center space-x-2">
+                <div class="article-author flex items-center">
+                  <div class="flex-shrink-0">
+                    <%= link_to author_path(related_post.author), 'umami-event': "Clicked Link: #{author_path(related_post.author)}", 'umami-href': author_path(related_post.author) do %>
+                      <%# FIXME: is related_post.author.avatar_url correct %>
+                      <%#= image_tag related_post.author.avatar_url, class: "h-5 w-5 mr-2 rounded-full", alt: related_post.author.name %>
+                    <% end %>
+                  </div>
+                  <div>
+                    <%= link_to related_post.author.name, author_path(related_post.author), 'umami-event': "Clicked Link: #{author_path(related_post.author)}", 'umami-href': author_path(related_post.author) %>
+                  </div>
+                </div>
+                <span>/</span>
+                <time datetime="<%= related_post.published_at.iso8601 %>"><%= related_post.published_at.strftime("%b %-d, %Y") %></time>
+              </div>
 
-            <p class="mt-3 text-base text-secondary-500"><%= post.excerpt %></p>
-
-            <div class="article-tags-list flex flex-wrap mt-5">
-              <% post.tags.each do |tag| %>
-                <%# FIXME: is tag_path(tag) correct? %>
-                <%#= link_to tag.name, tag_path(tag), class: "article-tag inline-flex items-center bg-secondary-100 text-xs font-bold text-secondary-600 transition-all duration-200 mr-2 mb-2 rounded-full px-2.5 py-0.5 hover:bg-secondary-200 hover:text-secondary-900", 'umami-event': "Clicked Link: #{tag_path(tag)}", 'umami-href': tag_path(tag) %>
+              <%= link_to blog_path(related_post), class: "block mt-4", 'umami-event': "Clicked Link: #{blog_path(related_post)}", 'umami-href': blog_path(related_post) do %>
+                <h3 class="article-title text-xl font-bold tracking-tight text-secondary-900"><%= related_post.title %></h3>
               <% end %>
+
+              <p class="mt-3 text-base text-secondary-500"><%= related_post.excerpt %></p>
             </div>
           </div>
-        </div>
+        <% end %>
+      <% else %>
+        <p>No related posts found.</p>
       <% end %>
     </div>
   </div>
