@@ -14,7 +14,13 @@
 <%= tag.meta property: "og:image", content: url_for(@presenter.get('general.social_cover')) %>
 <%= tag.meta property: "og:site_name", content: @presenter.get('general.publication_name') %>
 <%= tag.meta property: "og:type", content: "article" %>
+
 <%= csrf_meta_tags %>
+<%= csp_meta_tag %>
+
+<%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+<%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "bravura_template_base/application", "data-turbo-track": "reload" %>
 
 <link rel="preconnect" href="https://fonts.bunny.net">
 <link rel="stylesheet" href="https://fonts.bunny.net/css?family=inter:100,200,300,400,500,600,700,800,900&amp;display=swap">
@@ -30,5 +36,6 @@
   }
   .notion-collection-page-properties { display: none !important; }
 </style>
+
 
 <%= yield :head %>
