@@ -28,6 +28,6 @@ group :development, :test do
   gem "database_cleaner-active_record", "~> 2.2"
 
   #   gem 'simplecov', '~> 0.22.0', require: false
-  gem "shoulda-matchers", "~> 6.2.0", require: false
+  gem "shoulda-matchers", "~> 6.3.0", require: false
   gem "rails-controller-testing", "~> 1.0"
 end
