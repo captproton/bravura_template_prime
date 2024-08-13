@@ -1,0 +1,22 @@
+<nav class="flex" aria-label="Breadcrumb">
+  <ol class="inline-flex items-center space-x-1 md:space-x-3">
+    <li class="inline-flex items-center">
+      <%= link_to root_path, class: "text-secondary-400 hover:text-secondary-600" do %>
+        <%= inline_svg_tag 'icons/home.svg', class: "h-5 w-5 flex-shrink-0" %>
+        <span class="sr-only">Home</span>
+      <% end %>
+    </li>
+    <li>
+      <div class="flex items-center">
+        <%= inline_svg_tag 'icons/chevron-right.svg', class: "h-5 w-5 flex-shrink-0 text-secondary-400" %>
+        <%= link_to "Posts", blog_path, class: "ml-1 text-sm font-medium text-secondary-500 hover:text-secondary-700 md:ml-2" %>
+      </div>
+    </li>
+    <li aria-current="page">
+      <div class="flex items-center">
+        <%= inline_svg_tag 'icons/chevron-right.svg', class: "h-5 w-5 flex-shrink-0 text-secondary-400" %>
+        <span class="ml-1 text-sm font-medium text-secondary-500 md:ml-2 truncate"><%= @post.title %></span>
+      </div>
+    </li>
+  </ol>
+</nav>

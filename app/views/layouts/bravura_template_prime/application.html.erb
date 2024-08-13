@@ -1,28 +1,27 @@
-<%# app/views/layouts/bravura_template_prime/application.html.erb %>
-
 <!DOCTYPE html>
-<html lang="<%= I18n.locale %>">
+<%= content_tag :html,
+  dir: "ltr",
+  lang: "en",
+  class: "scroll-smooth antialiased selection:bg-primary-500 selection:text-primary-50",
+  data: {
+    theme: BlogTheme.find(@presenter.get("design.blog_theme_id")).name ,
+    graytheme: ShadesOfGray.find(@presenter.get("design.shades_of_gray_id")).name,
+    mode: SiteMode.find(@presenter.get("design.site_mode_id")).site_theme
+  } do %>
+      
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= yield(:title) || "Bravura Blog" %></title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-
-  <%= stylesheet_link_tag "bravura_template_prime/application", media: "all" %>
-  <%= javascript_include_tag "bravura_template_prime/application", defer: true %>
+  <%= render "bravura_template_prime/shared/head"%>
 </head>
-<body>
-  <header>
-    <!-- Add header content -->
-  </header>
 
-  <main>
+<body class="flex min-h-screen flex-col justify-between">
+<%# <body class="overflow-x-hidden bg-white font-sans text-secondary-900 antialiased">   %>
+  <%= render 'bravura_template_prime/shared/header' %>
+
+  <main class="main-wrapper flex-1" role="main">
     <%= yield %>
   </main>
 
-  <footer>
-    <!-- Add footer content -->
-  </footer>
+  <%= render 'bravura_template_prime/shared/footer' %>
 </body>
-</html>
+  <!-- Your page content goes here -->
+<% end %>

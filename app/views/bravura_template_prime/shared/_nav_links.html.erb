@@ -1,0 +1,42 @@
+<nav class="flex items-center">
+  <div class="nav-link-wrapper-left hidden lg:flex lg:items-center lg:justify-end lg:gap-4 lg:ml-auto lg:mr-8">
+    <%= link_to "Blog Home", "#", class: "nav-link nav-link-left group inline-flex items-center justify-center gap-1 text-base transition-all duration-200 rounded-cta-button-radius px-3 py-1.5 hover:bg-secondary-100 focus:outline-none focus:ring-2 focus:ring-offset-2 font-medium text-secondary-500 hover:text-secondary-900 focus:ring-secondary-900", 'umami-event': "Clicked Link: /all", 'umami-href': "/all" %>
+    
+    <%= link_to "Some Link", "#", class: "nav-link nav-link-left group inline-flex items-center justify-center gap-1 text-base transition-all duration-200 rounded-cta-button-radius px-3 py-1.5 hover:bg-secondary-100 focus:outline-none focus:ring-2 focus:ring-offset-2 font-medium text-secondary-500 hover:text-secondary-900 focus:ring-secondary-900", 'umami-event': "Clicked Link: /all", 'umami-href': "/all" %>
+
+    <%= link_to "Some Link", "#", class: "nav-link nav-link-left group inline-flex items-center justify-center gap-1 text-base transition-all duration-200 rounded-cta-button-radius px-3 py-1.5 hover:bg-secondary-100 focus:outline-none focus:ring-2 focus:ring-offset-2 font-medium text-secondary-500 hover:text-secondary-900 focus:ring-secondary-900", 'umami-event': "Clicked Link: /all", 'umami-href': "/all" %>
+
+  </div>
+
+  <div class="nav-links-wrapper-right flex items-center justify-end gap-3 lg:gap-4">
+    <div class="flex items-center justify-end gap-3 lg:gap-2">
+      <button class="search-button" aria-label="Search">
+        <%= inline_svg_tag 'icons/search.svg', class: "h-5 w-5" %>
+      </button>
+    </div>
+
+    <div class="hidden sm:flex sm:items-center sm:gap-4">
+      <!-- Add any additional elements for larger screens here -->
+    </div>
+
+    <div class="flex lg:hidden">
+      <button class="mobile-menu-toggle" aria-label="Open main menu">
+        <%= inline_svg_tag 'icons/menu.svg', class: "collapsed-icon h-6 w-6" %>
+        <%= inline_svg_tag 'icons/x.svg', class: "expanded-icon h-6 w-6" %>
+      </button>
+
+      <!-- Mobile menu (hidden by default) -->
+      <div class="mobile-menu absolute z-10 w-full bg-white shadow-lg left-0 mt-2 hidden">
+        <div class="nav-link-items-mobile px-4 pb-4 sm:px-6">
+          <div class="-mx-2 space-y-1 pt-4">
+            <%= link_to "Blog Home", "#", class: "nav-link nav-link-left group flex items-center text-base rounded-cta-button-radius px-3 py-1.5 hover:bg-secondary-100 font-medium text-secondary-500 hover:text-secondary-900 focus:ring-secondary-900", 'umami-event': "Clicked Link: /all", 'umami-href': "/all" %>
+            
+            <%= link_to "Some Link", "#", class: "nav-link nav-link-left group inline-flex items-center justify-center gap-1 text-base transition-all duration-200 rounded-cta-button-radius px-3 py-1.5 hover:bg-secondary-100 focus:outline-none focus:ring-2 focus:ring-offset-2 font-medium text-secondary-500 hover:text-secondary-900 focus:ring-secondary-900", 'umami-event': "Clicked Link: /all", 'umami-href': "/all" %>
+
+            <%= link_to "Some Link", "#", class: "nav-link nav-link-left group inline-flex items-center justify-center gap-1 text-base transition-all duration-200 rounded-cta-button-radius px-3 py-1.5 hover:bg-secondary-100 focus:outline-none focus:ring-2 focus:ring-offset-2 font-medium text-secondary-500 hover:text-secondary-900 focus:ring-secondary-900", 'umami-event': "Clicked Link: /all", 'umami-href': "/all" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
