@@ -3,13 +3,13 @@
     <div class="h-full w-full rotate-180 opacity-30 blur-lg bg-conic-gradient mx-auto" style="filter: blur(16px)"></div>
   </div>
 
-  <%= form_with(url: newsletter_subscriptions_path, class: "relative", local: true) do |f| %>
-    <%= f.email_field :email, 
+  <%#= form_with(url: newsletter_subscriptions_path, class: "relative", local: true) do |f| %>
+    <%#= f.email_field :email, 
         placeholder: "Enter your email", 
         class: "block w-full rounded-md border-secondary-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm",
         required: true %>
 
-    <%= f.submit "Subscribe to newsletter", 
+    <%#= f.submit "Subscribe to newsletter", 
         class: "newsletter-subscribe-button mt-4 sm:absolute sm:flex sm:items-center sm:inset-y-0 sm:right-0 sm:mt-0 sm:pr-2 bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-md" %>
-  <% end %>
+  <%# end %>
 </div>

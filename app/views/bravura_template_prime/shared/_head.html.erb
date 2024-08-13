@@ -1,5 +1,5 @@
 <%# app/views/bravura_template_prime/shared/_head.html.erb %>
-<title><%= content_tag :title, @presenter.get("general.publication_name") %></title>
+<%= content_tag :title, @presenter.get("general.publication_name") %>
 <%= favicon_link_tag @presenter.get('general.favicon').present? ? rails_blob_url(@presenter.get('general.favicon')) : asset_path('default_favicon.png') %>
 
 <%= tag.meta charset: "utf-8" %>
@@ -20,13 +20,10 @@
 
 <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
-<%= stylesheet_link_tag "bravura_template_base/application", "data-turbo-track": "reload" %>
-
+<%= stylesheet_link_tag "thefour", media: "all", "data-turbo-track": "reload" %>
 <link rel="preconnect" href="https://fonts.bunny.net">
 <link rel="stylesheet" href="https://fonts.bunny.net/css?family=inter:100,200,300,400,500,600,700,800,900&amp;display=swap">
 <link rel="canonical" href="<%= request.base_url %>">
-
-<%= stylesheet_link_tag "bravura_template_prime/application", media: "all", "data-turbo-track": "reload" %>
 
 <style>
   :root {
