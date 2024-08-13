@@ -20,6 +20,7 @@ gem "rubocop-rails-omakase", require: false
 #  app-specific gems
 gem "bravura_template_base", github: "captproton/bravura_template_base", branch: "develop"
 
+
 group :development, :test do
   gem "rspec-rails", "~> 6.1.3"
   gem "factory_bot_rails", "~> 6.4.3"

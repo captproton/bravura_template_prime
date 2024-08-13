@@ -1,0 +1,41 @@
+<div class="flex max-w-[var(--notion-max-width)] flex-col items-center mx-auto mt-8 border-t border-secondary-200 px-[calc(min(16px,8vw))] pt-8 sm:flex-row sm:items-start sm:mt-12 sm:pt-12">
+    <%# FIXME: image_tag author.avatar_url doesn't work.  Is this the proper url? %>
+  <%#= image_tag author.avatar_url, class: "h-24 w-24 shrink-0 overflow-hidden object-cover ring-1 ring-secondary-100 rounded-full", alt: author.name %>
+  
+  <div class="mt-6 text-center sm:ml-6 sm:mt-0 sm:text-left">
+    <div class="flex items-start justify-center sm:justify-between">
+      <div>
+        <p class="text-base font-semibold text-secondary-900">Written by</p>
+        <h3 class="text-xl font-bold text-secondary-900"><%= link_to author.name, author_path(author) %></h3>
+      </div>
+    </div>
+    
+    <p class="mt-2 text-sm text-secondary-600"><%= author.bio %></p>
+    
+    <div class="mt-4 flex justify-center sm:justify-start">
+      <% if author.twitter_url.present? %>
+        <%= link_to author.twitter_url, class: "text-secondary-500 hover:text-secondary-700", target: "_blank", rel: "noopener" do %>
+          <%= inline_svg_tag 'icons/twitter.svg', class: "h-5 w-5" %>
+        <% end %>
+      <% end %>
+      
+      <% if author.linkedin_url.present? %>
+        <%= link_to author.linkedin_url, class: "text-secondary-500 hover:text-secondary-700 ml-4", target: "_blank", rel: "noopener" do %>
+          <%= inline_svg_tag 'icons/linkedin.svg', class: "h-5 w-5" %>
+        <% end %>
+      <% end %>
+      
+      <% if author.youtube_url.present? %>
+        <%= link_to author.youtube_url, class: "text-secondary-500 hover:text-secondary-700 ml-4", target: "_blank", rel: "noopener" do %>
+          <%= inline_svg_tag 'icons/youtube.svg', class: "h-5 w-5" %>
+        <% end %>
+      <% end %>
+      
+      <% if author.tiktok_url.present? %>
+        <%= link_to author.tiktok_url, class: "text-secondary-500 hover:text-secondary-700 ml-4", target: "_blank", rel: "noopener" do %>
+          <%= inline_svg_tag 'icons/tiktok.svg', class: "h-6 w-6" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

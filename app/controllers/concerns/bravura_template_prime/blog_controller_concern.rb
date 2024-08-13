@@ -3,7 +3,7 @@
 module BravuraTemplatePrime
   module BlogControllerConcern
     extend ActiveSupport::Concern
-# FIXME: the methods using get() are not working
+    # FIXME: the methods using get() are not working
     included do
       # before_action :set_prime_specific_variables
       # before_action :set_prime_publication_constants
@@ -11,6 +11,11 @@ module BravuraTemplatePrime
 
     # Override or extend base methods as needed
     def index
+      super
+      # @prime_featured_posts = Post.prime_featured.limit(prime_featured_post_limit)
+    end
+
+    def show
       super
       # @prime_featured_posts = Post.prime_featured.limit(prime_featured_post_limit)
     end
