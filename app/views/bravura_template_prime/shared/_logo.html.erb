@@ -1,5 +1,23 @@
+<%
+      @logo_image_attachment = @presenter.get("navigation.logo")
+%>
+
 <div class="shrink-0">
-  <%= link_to root_path, class: "logo flex items-center", 'umami-event': "Clicked Link: /", 'umami-href': "/" do %>
-    <span class="text-2xl font-bold tracking-tight text-secondary-900">Company</span>
+
+  <%= link_to root_path, class: "logo flex items-center", data: { umami_event: "Clicked Link: /", umami_href: "/" } do %>
+    <% if  @logo_image_attachment.present? %>
+      <%= image_tag(    
+        url_for(@logo_image_attachment.variant(resize_to_limit: [1200, nil])), 
+        alt: "logo for #{@presenter.get("general.publication_name")}" ,
+        srcset: "#{url_for(@logo_image_attachment.variant(resize_to_limit: [480, nil]))} 480w, 
+          #{url_for(@logo_image_attachment.variant(resize_to_limit: [800, nil]))} 800w, 
+          #{url_for(@logo_image_attachment.variant(resize_to_limit: [1200, nil]))} 1200w",
+        sizes: "(max-width: 599px) 480px, (max-width: 1199px) 800px, 1200px",
+        class: "h-8 w-auto mr-1"
+      ) %>
+    <% end %>
+    <span class="text-2xl font-bold tracking-tight text-secondary-900">
+      <%= @presenter.get("general.publication_name") %>
+    </span>
   <% end %>
 </div>
