@@ -1,7 +1,24 @@
+<%#  %>
 <nav class="footer-links">
-  <%= link_to "Blog Home", "#", class: "text-base font-medium text-secondary-600 transition-all duration-200 hover:text-primary-500", 'umami-event': "Clicked Link: /all", 'umami-href': "/all" %>
 
-  <%= link_to "Link", "https://feather.so", class: "text-base font-medium text-secondary-600 transition-all duration-200 hover:text-primary-500", target: "_blank", rel: "noopener", 'umami-event': "Clicked Link: https://feather.so", 'umami-href': "https://feather.so" %>
+  <% links = [
+    { text: "Blog Home", href: "/", event: "Clicked Link: /", external: false },
+    { text: "Some Link", href: "https://feather.so", event: "Clicked Link: https://feather.so", external: true },
+    { text: "Some Other Link", href: "https://feather.so/showcase", event: "Clicked Link: https://feather.so/showcase", external: true }
+  ] %>
 
-  <%= link_to "Another Link", "https://feather.so/showcase", class: "text-base font-medium text-secondary-600 transition-all duration-200 hover:text-primary-500", target: "_blank", rel: "noopener", 'umami-event': "Clicked Link: https://feather.so/showcase", 'umami-href': "https://feather.so/showcase" %>
+  <div class="nav-link-wrapper-left hidden lg:flex lg:items-center lg:justify-end lg:gap-4 lg:mr-auto lg:ml-8">
+    <% links.each do |link| %>
+      <%= link_to link[:href], 
+                  class: "text-base font-medium text-secondary-600 transition-all duration-200 hover:text-primary-500",
+                  'data-umami-event': link[:event], 
+                  'data-umami-href': link[:href], 
+                  target: ("_blank" if link[:external]), 
+                  rel: ("noopener" if link[:external]) do %>
+        <%= link[:text] %>
+      <% end %>
+    <% end %>
+  </div>
 </nav>
+
+<%#  %>

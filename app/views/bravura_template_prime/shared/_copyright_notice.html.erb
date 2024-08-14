@@ -1,0 +1,7 @@
+      <p class="copyright-notice text-sm text-secondary-600">
+        <% if @presenter.get("footer.copyright").present? %>
+            <%= @presenter.get("footer.copyright") %>
+        <% else %>
+            &copy; <%= Time.current.year %> <%= "site_name" %>. All Rights Reserved.
+        <% end %>
+      </p>
