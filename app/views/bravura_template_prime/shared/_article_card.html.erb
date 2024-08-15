@@ -9,11 +9,16 @@
 			<div class="article-author flex items-center">
 				<div class="flex-shrink-0">
 					<%= link_to author_path(article.author), class: "", data: { umami_event: "Clicked Link: #{author_path(article.author)}", umami_href: "#{author_path(article.author)}" } do %>
-					<span class="sr-only">
-						<%= article.author.name %>
-					</span>
-					<%= image_tag "https://cdn.feather.blog?src=https%3A%2F%2Fusenotioncms.com%2Fproxy%2Fblock%2F4ae0aebf-c670-43a2-9116-e56bb9892f05%252F10ebc1a9-6ca8-41f8-96d3-42e13086978a%252F14.png&amp;optimizer=image", alt:
-					article.author.name, class: "h-5 w-5 mr-2 rounded-full" %> <% end %>
+						<span class="sr-only">
+							<%= article.author.name %>
+						</span>
+					<%#  %>
+					<%= image_tag(article.author.avatar.attached? ? url_for(article.author.avatar) : asset_path('default_avatar.jpg'),
+              		alt: article.author.name,
+              		class: "h-5 w-5 mr-2 rounded-full") %>
+
+						<%#  %>
+					<% end %>
 				</div>
 				<div>
 					<p class="text-sm font-semibold text-secondary-900">

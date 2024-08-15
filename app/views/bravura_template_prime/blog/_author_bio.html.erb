@@ -1,16 +1,33 @@
 <div class="flex max-w-[var(--notion-max-width)] flex-col items-center mx-auto mt-8 border-t border-secondary-200 px-[calc(min(16px,8vw))] pt-8 sm:flex-row sm:items-start sm:mt-12 sm:pt-12">
     <%# FIXME: image_tag author.avatar_url doesn't work.  Is this the proper url? %>
   <%#= image_tag author.avatar_url, class: "h-24 w-24 shrink-0 overflow-hidden object-cover ring-1 ring-secondary-100 rounded-full", alt: author.name %>
-  
+  <%#  %>
+  <%= link_to author_path(author), 
+            class: "h-24 w-24 shrink-0 overflow-hidden object-cover ring-1 ring-secondary-100 rounded-full", 
+            data: { umami_event: "Clicked Link: /#{author.name.parameterize}", umami_href: "/#{author.name.parameterize}" } do %>
+  <% if author.avatar.attached? %>
+    <%= image_tag url_for(author.avatar),
+                  alt: author.name, 
+                  srcset: "#{url_for(author.avatar)} 480w, #{url_for(author.avatar)} 800w, #{url_for(author.avatar)} 1200w", 
+                  sizes: "(max-width: 599px) 480px, (max-width: 1199px) 800px, 1200px", 
+                  class: "h-full w-full object-cover" %>
+  <% else %>
+    <%= image_tag 'default_avatar',
+                  alt: author.name, 
+                  class: "h-full w-full object-cover" %>
+  <% end %>
+<% end %>
+
+  <%#  %>
   <div class="mt-6 text-center sm:ml-6 sm:mt-0 sm:text-left">
     <div class="flex items-start justify-center sm:justify-between">
       <div>
-        <p class="text-base font-semibold text-secondary-900">Written by</p>
-        <h3 class="text-xl font-bold text-secondary-900"><%= link_to author.name, author_path(author) %></h3>
+        <p class="text-xs font-bold uppercase tracking-widest text-secondary-400">Written by</p>
+        <h3 class="text-2xl font-bold text-secondary-900 mt-2"><%= link_to author.name, author_path(author) %></h3>
       </div>
     </div>
     
-    <p class="mt-2 text-sm text-secondary-600"><%= author.bio %></p>
+    <p class="text-base font-normal text-secondary-600 mt-3 sm:text-lg"><%= author.bio %></p>
     
     <div class="mt-4 flex justify-center sm:justify-start">
       <% if author.twitter_url.present? %>
