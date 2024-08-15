@@ -1,24 +1,28 @@
-<%#  %>
+<%
+  footer = Settings::Footer.find(@presenter.get("footer.id"))
+  links = footer.links.map do |link|
+    {
+      text: link.name,
+      href: link.link_kind == "external_link" ? link.external_link : (link.generated_page_type ? "/#{link.generated_page_type}" : "#"),
+      event: "Clicked Link: #{link.link_kind == "external_link" ? link.external_link : link.generated_page_type}",
+      external: link.link_kind == "external_link"
+    }
+  end
+%>
+
 <nav class="footer-links">
-
-  <% links = [
-    { text: "Blog Home", href: "/", event: "Clicked Link: /", external: false },
-    { text: "Some Link", href: "https://feather.so", event: "Clicked Link: https://feather.so", external: true },
-    { text: "Some Other Link", href: "https://feather.so/showcase", event: "Clicked Link: https://feather.so/showcase", external: true }
-  ] %>
-
-  <div class="nav-link-wrapper-left hidden lg:flex lg:items-center lg:justify-end lg:gap-4 lg:mr-auto lg:ml-8">
+  <div class="nav-link-wrapper-left lg:flex lg:items-center lg:justify-end lg:gap-4 lg:mr-auto lg:ml-8">
     <% links.each do |link| %>
-      <%= link_to link[:href], 
-                  class: "text-base font-medium text-secondary-600 transition-all duration-200 hover:text-primary-500",
-                  'data-umami-event': link[:event], 
-                  'data-umami-href': link[:href], 
-                  target: ("_blank" if link[:external]), 
-                  rel: ("noopener" if link[:external]) do %>
+      <%= link_to link[:href],
+          class: "text-base font-medium text-secondary-600 transition-all duration-200 hover:text-primary-500",
+          data: {
+            umami_event: link[:event],
+            umami_href: link[:href]
+          },
+          target: (link[:external] ? "_blank" : nil),
+          rel: (link[:external] ? "noopener" : nil) do %>
         <%= link[:text] %>
       <% end %>
     <% end %>
   </div>
 </nav>
-
-<%#  %>
