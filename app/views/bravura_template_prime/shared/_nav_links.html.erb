@@ -3,11 +3,17 @@
   @current_navigation_bar = NavigationBar.find(design_navigation_bar_id)
 %>
 
-<% links = [
-  { text: "Blog Home", href: "/", event: "Clicked Link: /", external: false },
-  { text: "Some Link", href: "https://feather.so", event: "Clicked Link: https://feather.so", external: true },
-  { text: "Some Other Link", href: "https://feather.so/showcase", event: "Clicked Link: https://feather.so/showcase", external: true }
-] %>
+<%
+  navigation = Settings::Navigation.find(@presenter.get("navigation.id"))
+  links = navigation.links.map do |link|
+    {
+      text: link.name,
+      href: link.link_kind == "external_link" ? link.external_link : (link.generated_page_type ? "/#{link.generated_page_type}" : "#"),
+      event: "Clicked Link: #{link.link_kind == "external_link" ? link.external_link : link.generated_page_type}",
+      external: link.link_kind == "external_link"
+    }
+  end
+%>
 
 <div class="nav-link-wrapper-left hidden lg:flex lg:items-center lg:justify-end lg:gap-4 lg:mr-auto lg:ml-8">
   <% links.each do |link| %>
