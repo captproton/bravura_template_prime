@@ -1,17 +1,19 @@
 <%# app/views/bravura_template_prime/shared/_top_nav.html.erb %>
-<header class="navbar sticky z-20 h-16 bg-white/90 shadow-sm backdrop-blur-lg top-0 py-3">
+<header class="navbar sticky z-20 h-auto min-h-16 bg-white/90 shadow-sm backdrop-blur-lg top-0 py-3">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between">
-      <div class="shrink-0">
+    <div class="flex flex-wrap items-center justify-between">
+      <div class="shrink-0 flex items-center flex-grow mr-4 mb-2 sm:mb-0 w-full sm:w-auto">
         <%= link_to root_url, class: 'logo flex items-center', data: { umami_event: 'Clicked Link: /', umami_href: '/' } do %>
           <% if @current_account&.settings_navigation&.logo&.attached? %>
-            <%= image_tag(@current_account.settings_navigation.logo, alt: "Logo", class: "h-8 w-auto mr-1") %>
+            <%= image_tag(@presenter.get('navigation.logo'), alt: "Logo", class: "h-8 w-auto mr-2 flex-shrink-0") %>
           <% else %>
-            <%= image_tag('default_logo.png', alt: "Default Logo", class: "h-8 w-auto mr-1") %>
+            <%= image_tag('default_logo.png', alt: "Default Logo", class: "h-8 w-auto mr-2 flex-shrink-0") %>
           <% end %>
-          <span class="text-2xl font-bold tracking-tight text-secondary-900">
-            <%= @presenter.get('navigation.logo_text') %>
-          </span>
+          <div class="min-w-0 flex-1">
+            <span class="text-lg sm:text-xl lg:text-2xl font-bold tracking-tight text-secondary-900 break-words hyphens-auto inline-block">
+              <%= @presenter.get('navigation.logo_text') %>
+            </span>
+          </div>
         <% end %>
       </div>
       <div class="nav-links-wrapper-right flex items-center justify-end gap-3 lg:gap-4">

@@ -1,7 +1,28 @@
+<%
+  footer = Settings::Footer.find(@presenter.get("footer.id"))
+  links = footer.links.map do |link|
+    {
+      text: link.name,
+      href: link.link_kind == "external_link" ? link.external_link : (link.generated_page_type ? "/#{link.generated_page_type}" : "#"),
+      event: "Clicked Link: #{link.link_kind == "external_link" ? link.external_link : link.generated_page_type}",
+      external: link.link_kind == "external_link"
+    }
+  end
+%>
+
 <nav class="footer-links">
-  <%= link_to "Blog Home", "#", class: "text-base font-medium text-secondary-600 transition-all duration-200 hover:text-primary-500", 'umami-event': "Clicked Link: /all", 'umami-href': "/all" %>
-
-  <%= link_to "Link", "https://feather.so", class: "text-base font-medium text-secondary-600 transition-all duration-200 hover:text-primary-500", target: "_blank", rel: "noopener", 'umami-event': "Clicked Link: https://feather.so", 'umami-href': "https://feather.so" %>
-
-  <%= link_to "Another Link", "https://feather.so/showcase", class: "text-base font-medium text-secondary-600 transition-all duration-200 hover:text-primary-500", target: "_blank", rel: "noopener", 'umami-event': "Clicked Link: https://feather.so/showcase", 'umami-href': "https://feather.so/showcase" %>
+  <div class="nav-link-wrapper-left lg:flex lg:items-center lg:justify-end lg:gap-4 lg:mr-auto lg:ml-8">
+    <% links.each do |link| %>
+      <%= link_to link[:href],
+          class: "text-base font-medium text-secondary-600 transition-all duration-200 hover:text-primary-500",
+          data: {
+            umami_event: link[:event],
+            umami_href: link[:href]
+          },
+          target: (link[:external] ? "_blank" : nil),
+          rel: (link[:external] ? "noopener" : nil) do %>
+        <%= link[:text] %>
+      <% end %>
+    <% end %>
+  </div>
 </nav>

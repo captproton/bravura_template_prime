@@ -1,0 +1,23 @@
+<!-- app/views/bravura_template_prime/shared/_newsletter_banner.html.erb -->
+<section id="newsletter-in-footer-wrapper" class="newsletter py-12 sm:py-16 lg:py-20 newsletter-in-footer bg-secondary-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="newsletter-metadata max-w-2xl mx-auto text-center">
+      <h2 class="newsletter-headline text-2xl font-bold text-secondary-900 sm:text-3xl lg:text-4xl">Footer: Join other 3200+ marketers now!</h2>
+      <p class="newsletter-subheadline max-w-md text-base font-medium text-secondary-500 mx-auto mt-5">Ready to take the next big step for your business?</p>
+    </div>
+
+    <div class="newsletter-form-wrapper relative max-w-xl mx-auto mt-12">
+      <div class="absolute -inset-2">
+        <div class="h-full w-full rotate-180 opacity-30 blur-lg bg-conic-gradient mx-auto" style="filter:blur(16px)"></div>
+      </div>
+
+      <%= render "newsletter_subscriptions/form", newsletter_subscription: NewsletterSubscription.new %>
+    </div>
+
+    <div id="newsletter_subscriptions">
+      <%= render partial: "bravura_template_prime/newsletter_subscriptions/newsletter_subscription", collection: current_account.newsletter_subscriptions.order(created_at: :desc) %>
+    </div>
+
+    <p class="newsletter-spam-notice text-sm font-medium text-secondary-500 mt-6 text-center">No spam. Unsubscribe at any time.</p>
+  </div>
+</section>

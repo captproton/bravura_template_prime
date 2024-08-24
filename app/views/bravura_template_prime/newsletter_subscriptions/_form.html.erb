@@ -1,0 +1,14 @@
+<!-- app/views/bravura_template_prime/newsletter_subscriptions/_form.html.erb -->
+<%= form_with(model: newsletter_subscription, id: "newsletter_form", class: "newsletter-form relative") do |form| %>
+  <% if newsletter_subscription.errors.any? %>
+    <div class="error-message text-red-500 mb-2">
+      <%= newsletter_subscription.errors.full_messages.to_sentence %>
+    </div>
+  <% end %>
+
+  <%= form.email_field :email, placeholder: "Enter your email address", class: "newsletter-email block w-full bg-white text-base font-medium text-secondary-900 rounded-cta-button-radius border border-primary-100 px-4 py-3 focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:py-5", required: true, aria: { label: "Email" } %>
+
+  <div class="newsletter-subscribe-button mt-4 sm:absolute sm:flex sm:items-center sm:inset-y-0 sm:right-0 sm:mt-0 sm:pr-2">
+    <%= form.submit "Subscribe to newsletter", class: "inline-flex w-full items-center justify-center bg-primary-500 text-base font-bold text-primary-50 shadow-sm rounded-cta-button-radius border border-transparent px-5 py-3 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-secondary-900 focus:ring-offset-2 sm:w-auto" %>
+  </div>
+<% end %>
