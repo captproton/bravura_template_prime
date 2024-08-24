@@ -23,8 +23,7 @@
       <div class="article-cover-wrapper relative">
         <div class="absolute rotate-180 opacity-30 blur-lg bg-conic-gradient -inset-1" style="filter:blur(16px)"></div>
         <div class="article-cover aspect-w-16 aspect-h-8 relative overflow-hidden rounded-lg">
-            <%# FIXME: is cover_image_url known as something else? %>
-          <%#= image_tag @post.cover_image_url, class: "h-full w-full object-cover", alt: @post.title %>
+          <%= image_tag @post.cover, class: "h-full w-full object-cover", alt: "cover image for #{@post.title}"  %>
         </div>
       </div>
     </div>
@@ -48,7 +47,6 @@
     </div>
   </div>
 </section>
-<%# FIXME: this is not using the related_posts scope %>
-<%= render 'bravura_template_prime/blog/related_posts', related_posts: @posts %>
+<%= render 'bravura_template_prime/blog/related_posts', related_posts: @related_posts %>
 
 <%= render 'bravura_template_prime/shared/newsletter' %>

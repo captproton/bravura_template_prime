@@ -1,13 +1,16 @@
-<%# app/views/bravura_template_prime/blog/_featured_articles.html.erb %>
-<h2>#FIXME: needs variables from renderer </h2>
-<div class="featured-articles-wrapper grid grid-cols-1 gap-8 mt-8 xl:grid-cols-2">
-  <%#= render partial: '/bravura_template_prime/blog/index/featured_article_main',
-  locals: { article: articles[0] } if articles[0].present? %>
+<section class="section normal-featured-articles-list bg-secondary-50 pb-12 sm:pb-16 lg:pb-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-xl font-bold text-secondary-900 sm:text-2xl">Featured posts</h2>
+    <div class="featured-articles-wrapper grid grid-cols-1 gap-8 mt-8 xl:grid-cols-2">
+      <!-- Main featured article -->
+      <%= render '/bravura_template_prime/blog/index/featured_article_main', article: articles.first %>
 
-  <div class="space-y-8">
-    <%#= render partial: '/bravura_template_prime/blog/index/featured_article_main',
-      locals: { article: articles[1] } if articles[1].present? %>
-    <%#= render partial: '/bravura_template_prime/blog/index/featured_article_main',
-      locals: { article: @featured_articles[2] } if @featured_articles[2].present? %>
+      <!-- Two smaller featured articles -->
+      <div class="space-y-8">
+        <% articles[1..2].each do |article| %>
+          <%= render '/bravura_template_prime/blog/index/featured_article_normal', article: article %>
+        <% end %>
+      </div>
+    </div>
   </div>
-</div>
+</section>

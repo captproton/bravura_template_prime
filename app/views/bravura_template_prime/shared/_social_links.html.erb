@@ -1,16 +1,46 @@
-<div class="social-links flex space-x-4">
-  <%= link_to "https://twitter.com/feather_blogs", class: "inline-flex h-10 w-10 items-center justify-center text-secondary-600 transition-all duration-200 rounded-full hover:bg-primary-50 hover:text-primary-700", target: "_blank", rel: "noopener", 'umami-event': "Clicked Link: https://twitter.com/feather_blogs", 'umami-href': "https://twitter.com/feather_blogs" do %>
-    <span class="sr-only">Twitter</span>
-    <%= inline_svg_tag 'icons/twitter.svg', class: "h-6 w-6" %>
-  <% end %>
+<div class="social-links flex flex-wrap justify-center items-center gap-2 sm:gap-3 md:gap-4 max-w-screen-lg mx-auto">
 
+<%
+social_links = [
+  { name: "Facebook", url: @presenter.get("general.facebook_url"), icon: "brands/facebook" },
+  { name: "Twitter/X", url: @presenter.get("general.x_url"), icon: "brands/twitter" },
+  { name: "Instagram", url: @presenter.get("general.instagram_url"), icon: "brands/instagram" },
+  { name: "LinkedIn", url: @presenter.get("general.linkedin_url"), icon: "brands/linkedin" },
+  { name: "Pinterest", url: @presenter.get("general.pinterest_url"), icon: "brands/pinterest" },
+  { name: "TikTok", url: @presenter.get("general.tiktok_url"), icon: "brands/tiktok" },
+  { name: "Telegram", url: @presenter.get("general.telegram_url"), icon: "brands/telegram" },
+  { name: "Mastodon", url: @presenter.get("general.mastodon_url"), icon: "brands/mastodon" },
+  { name: "YouTube", url: @presenter.get("general.youtube_url"), icon: "brands/youtube" }
+]
+%>
+
+<% social_links.each do |link| %>
+  <% if link[:url].present? %>
+    <%= link_to link[:url],
+      target: "_blank",
+      rel: "noopener",
+      class: "inline-flex h-10 w-10 items-center justify-center text-secondary-600 transition-all duration-200 rounded-full hover:bg-primary-50 hover:text-primary-700",
+      data: {
+        umami_event: "Clicked Link: #{link[:url]}",
+        umami_href: link[:url]
+      } do %>
+      <span class="sr-only"><%= link[:name] %></span>
+      <%= render_svg link[:icon], styles: "h-6 w-6" %>
+    <% end %>
+  <% end %>
+<% end %>
+			
+<% if @presenter.get("footer.rss_feed").present? %>
   <%= link_to "/_feather/rss.xml", class: "inline-flex h-10 w-10 items-center justify-center text-secondary-600 transition-all duration-200 rounded-full hover:bg-primary-50 hover:text-primary-700", target: "_blank", rel: "noopener", 'umami-event': "Clicked Link: /_feather/rss.xml", 'umami-href': "/_feather/rss.xml" do %>
     <span class="sr-only">RSS Feed</span>
     <%= inline_svg_tag 'icons/rss.svg', class: "h-6 w-6" %>
   <% end %>
+<% end %>
 
-  <%= link_to "/_feather/sitemap.xml", class: "inline-flex h-10 w-10 items-center justify-center text-secondary-600 transition-all duration-200 rounded-full hover:bg-primary-50 hover:text-primary-700", target: "_blank", rel: "noopener", 'umami-event': "Clicked Link: /_feather/sitemap.xml", 'umami-href': "/_feather/sitemap.xml" do %>
-    <span class="sr-only">Sitemap</span>
-    <%= inline_svg_tag 'icons/sitemap.svg', class: "h-6 w-6" %>
-  <% end %>
+<% if @presenter.get("footer.sitemap").present? %>
+    <%= link_to "/_feather/sitemap.xml", class: "inline-flex h-10 w-10 items-center justify-center text-secondary-600 transition-all duration-200 rounded-full hover:bg-primary-50 hover:text-primary-700", target: "_blank", rel: "noopener", 'umami-event': "Clicked Link: /_feather/sitemap.xml", 'umami-href': "/_feather/sitemap.xml" do %>
+      <span class="sr-only">Sitemap</span>
+      <%= inline_svg_tag 'icons/sitemap.svg', class: "h-6 w-6" %>
+    <% end %>
+<% end %>
 </div>

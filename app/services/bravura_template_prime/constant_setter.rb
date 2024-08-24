@@ -60,7 +60,7 @@ module BravuraTemplatePrime
     end
 
     def set_prime_button_style
-      button_style_id = @presenter.get("design.prime_button_style_id")
+      button_style_id = @presenter.get("design.button_style_id")
       button_style = find_record(ButtonStyle, button_style_id)
       button_style_name = button_style&.name || "normal"
       set_instance_variable("@prime_button_radius", set_prime_button_radius(button_style_name))

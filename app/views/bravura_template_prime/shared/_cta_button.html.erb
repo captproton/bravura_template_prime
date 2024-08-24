@@ -2,12 +2,23 @@
   <div class="cta-button-section normal-cta-button-section overflow-hidden bg-primary-500 rounded-3xl text-center selection:bg-primary-600">
     <div class="p-8 sm:p-12">
       <h3 class="text-2xl font-bold tracking-tight text-primary-50 sm:text-3xl lg:text-4xl">
-        Join other 3200+ marketers now!
+        <%= @presenter.get("cta_button_setup.cta_button_heading") %>
       </h3>
-      <p class="mt-2 text-lg text-primary-100">
-        Ready to take the next big step for your business?
+      <p class="text-base font-medium text-primary-50/70 mt-4">
+        <%= @presenter.get("cta_button_setup.cta_button_sub_heading") %>
       </p>
-      <%= link_to "Subscribe", "#newsletter-in-footer-wrapper", class: "group inline-flex items-center justify-center bg-primary-900 text-base font-semibold text-primary-50 mt-4 rounded-cta-button-radius px-5 py-3 hover:bg-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-900 focus:ring-offset-2 focus:ring-offset-primary-500", data: { "umami-event": "Clicked Link: #newsletter-in-footer-wrapper", "umami-href": "#newsletter-in-footer-wrapper" } %>
+      <%# FIXME:  rounded-cta-button-radius needs to be set by "`design.button_style`" %>
+          <%  %>
+      <% 
+        button_style_id = @presenter.get("settings_design.button_style_id").to_i
+        tailwind_button_classes = button_style_id > 0 ? ButtonStyle.find(button_style_id).style_classes : "rounded"
+      %>
+      <%= link_to @presenter.get("cta_button_setup.cta_button_text"), 
+        @presenter.get("cta_button_setup.cta_button_link"), 
+        class: "group inline-flex items-center justify-center bg-primary-900 text-base #{tailwind_button_classes} font-semibold text-primary-50 mt-4  px-5 py-3 hover:bg-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-900 focus:ring-offset-2 focus:ring-offset-primary-500", 
+        data: { "umami-event": "Clicked Link: #newsletter-in-footer-wrapper", "umami-href": "#newsletter-in-footer-wrapper" },
+        style: "border-radius: 10px;"
+        %>
     </div>
   </div>
 </div>
