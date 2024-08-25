@@ -23,5 +23,5 @@ Gem::Specification.new do |spec|
   end
 
   spec.add_dependency "rails", ">= 7.1.1"
-  spec.add_dependency "bravura_template_base", "~> 0.1.0"
+  spec.add_dependency "bravura_template_base", ">= 0.1.0"
 end
