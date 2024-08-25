@@ -14,8 +14,9 @@
     </li>
     <li aria-current="page">
       <div class="flex items-center">
-        <%= inline_svg_tag 'icons/chevron-right.svg', class: "h-5 w-5 flex-shrink-0 text-secondary-400" %>
-        <span class="ml-1 text-sm font-medium text-secondary-500 md:ml-2 truncate"><%= @post.title %></span>
+        <%# FIXME: this should render the title or name specific to the controller %>
+        <%#= inline_svg_tag 'icons/chevron-right.svg', class: "h-5 w-5 flex-shrink-0 text-secondary-400" %>
+        <!-- <span class="ml-1 text-sm font-medium text-secondary-500 md:ml-2 truncate">= @post.title</span> -->
       </div>
     </li>
   </ol>

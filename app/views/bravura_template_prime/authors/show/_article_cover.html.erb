@@ -1,0 +1,4 @@
+<%= link_to blog_path(article), class: "article-cover aspect-w-16 aspect-h-8 block overflow-hidden bg-secondary-200 rounded-lg", data: { "umami-event": "Clicked Link: #{article.slug}", "umami-href": blog_path(article) } do %>
+  <span class="sr-only"><%= article.title %></span>
+  <%= image_tag url_for(article.cover), alt: article.title, class: "h-full w-full object-cover transition-all duration-100 group-hover:opacity-75" %>
+<% end %>
