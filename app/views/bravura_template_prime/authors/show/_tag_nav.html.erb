@@ -1,0 +1,7 @@
+<nav class="<%= class_name %>" aria-label="Sidebar">
+  <%= link_to '/tags/all-tags', class: "group flex w-full items-center text-sm font-medium rounded-lg px-3 py-2 bg-secondary-100 text-secondary-900", aria: { current: 'page' } do %>
+    <span class="truncate">All Tags</span>
+    <span class="inline-block bg-white text-xs ml-auto rounded-full py-0.5 px-3"><%= @tags.count %></span>
+  <% end %>
+  <%= render partial: 'bravura_template_prime/authors/show/tag_link', collection: @tags, as: :tag %>
+</nav>

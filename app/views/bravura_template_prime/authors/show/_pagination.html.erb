@@ -1,0 +1,10 @@
+<form method="get" action="/marvin-mckinney?tag=all-tags" class="pagination flex items-center justify-between mt-5 space-x-4 sm:space-x-0">
+  <input type="hidden" name="tag" value="all-tags" />
+  <%= render 'bravura_template_prime/authors/show/pagination_button', direction: 'previous', disabled: true %>
+  <div class="hidden md:flex md:space-x-2">
+    <button type="submit" name="page" value="1" class="page inline-flex h-10 w-10 items-center justify-center text-sm font-bold rounded-lg hover:bg-secondary-100 hover:text-secondary-900 bg-secondary-100 text-secondary-900" aria-current="page">
+      1
+    </button>
+  </div>
+  <%= render 'bravura_template_prime/authors/show/pagination_button', direction: 'next', disabled: true %>
+</form>

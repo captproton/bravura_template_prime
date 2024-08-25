@@ -1,0 +1,20 @@
+<%# app/views/authors/_sidebar.html.erb %>
+<div class="categories-sidebar lg:sticky lg:col-span-3 lg:top-28">
+  <p class="hidden text-xs font-bold uppercase tracking-widest text-secondary-500 lg:block">Tags</p>
+
+  <nav class="max-h-[50vh] overflow-y-auto mt-5 space-y-1 hidden lg:block" aria-label="Sidebar">
+    <%= link_to author_path(@author), class: "group flex w-full items-center text-sm font-medium rounded-lg px-3 py-2 #{@selected_tag.nil? ? 'bg-secondary-100 text-secondary-900' : 'text-secondary-500 hover:bg-secondary-100 hover:text-secondary-900'}", aria: { current: @selected_tag.nil? ? 'page' : nil } do %>
+      <span class="truncate">All Tags</span>
+      <span class="inline-block bg-white text-xs ml-auto rounded-full py-0.5 px-3"><%= @author.posts.count %></span>
+    <% end %>
+    
+    <% @tags.each do |tag| %>
+      <%= link_to tag_author_path(@author, tag.name), class: "group flex w-full items-center text-sm font-medium rounded-lg px-3 py-2 #{@selected_tag == tag.name ? 'bg-secondary-100 text-secondary-900' : 'text-secondary-500 hover:bg-secondary-100 hover:text-secondary-900'}", aria: { current: @selected_tag == tag.name ? 'page' : nil } do %>
+        <span class="truncate"><%= tag.name %></span>
+        <span class="inline-block bg-white text-xs ml-auto rounded-full py-0.5 px-3"><%= tag.taggings_count %></span>
+      <% end %>
+    <% end %>
+  </nav>
+  
+  <%= render "bravura_template_prime/authors/show/mobile_tag_menu" %>
+</div>

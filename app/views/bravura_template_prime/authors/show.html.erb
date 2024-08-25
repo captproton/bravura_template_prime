@@ -1,0 +1,37 @@
+<%# app/views/bravura_template_prime/authors/show.html.erb %>
+<% content_for :local_javascript do %>
+  <script>
+    // Your inline JavaScript code here
+    console.log('This is the show page');
+  </script>
+  <script>
+    // This JavaScript will rotate the mobile tags menu chevron icon 180 degrees when the menu is opened, 
+    // and back to 0 degrees when it's closed.
+    document.addEventListener('DOMContentLoaded', (event) => {
+    const details = document.querySelector('.menu-details');
+    const summary = details.querySelector('summary');
+    const chevron = summary.querySelector('svg');
+
+    details.addEventListener('toggle', () => {
+        if (details.open) {
+        chevron.style.transform = 'rotate(180deg)';
+        } else {
+        chevron.style.transform = 'rotate(0)';
+        }
+    });
+    });
+  </script>    
+<% end %>
+
+<%#  %>
+
+<%= render "bravura_template_prime/authors/show/hero" %>
+<section id="all-posts" class="normal-articles-list bg-white py-12 sm:py-16 lg:py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-xl font-bold text-secondary-900 sm:text-2xl">All posts</h2>
+    <div class="relative grid grid-cols-1 items-start gap-16 mt-8 lg:grid-cols-12">
+      <%= render "bravura_template_prime/authors/show/sidebar" %>
+      <%= render "bravura_template_prime/authors/show/articles_grid" %>
+    </div>
+  </div>
+</section>
