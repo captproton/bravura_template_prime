@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/captproton/bravura_template_base.git
-  revision: af71a203d48268aba553e5afeba582e215c088af
-  branch: feature/refactor_blog_concern
+  revision: 698af6c593404822e6881cb6f382bad19ad3c805
+  branch: develop
   specs:
     bravura_template_base (0.2.1)
       pagy (~> 9.0)

@@ -18,7 +18,7 @@ gem "rubocop-rails-omakase", require: false
 # gem "debug", ">= 1.0.0"
 
 #  app-specific gems
-gem "bravura_template_base", github: "captproton/bravura_template_base", branch: "feature/refactor_blog_concern"
+gem "bravura_template_base", github: "captproton/bravura_template_base", branch: "develop"
 
 
 group :development, :test do
