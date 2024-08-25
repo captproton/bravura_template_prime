@@ -1,0 +1,24 @@
+<div class="flex flex-wrap items-center space-x-2">
+  <div class="article-author flex items-center">
+    <div class="flex-shrink-0">
+      <%= link_to author_path(article.author) do %>
+        <span class="sr-only"><%= article.author.name %></span>
+        <%= image_tag avatar_url(article.author, 40), 
+            alt: article.author.name, 
+            class: "h-5 w-5 mr-2 rounded-full",
+            srcset: "#{avatar_url(article.author, 40)} 1x, #{avatar_url(article.author, 80)} 2x",
+            loading: "lazy"
+        %>
+      <% end %>
+    </div>
+    <div>
+      <p class="text-sm font-semibold text-secondary-900">
+        <%= link_to article.author.name, author_path(article.author), data: { "umami-event": "Clicked Link: #{author_path(article.author)}", "umami-href": author_path(article.author) } %>
+      </p>
+    </div>
+  </div>
+  <p class="article-publish-date-separator text-sm font-medium text-secondary-500">/</p>
+  <p class="article-publish-date text-sm font-medium text-secondary-500">
+    <time datetime="<%= article.published_at.to_date %>"><%= article.published_at.strftime("%b %d, %Y") %></time>
+  </p>
+</div>

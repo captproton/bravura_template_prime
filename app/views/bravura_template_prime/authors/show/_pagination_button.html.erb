@@ -1,0 +1,19 @@
+<button
+  type="submit"
+  disabled="<%= disabled %>"
+  class="inline-flex items-center justify-center bg-white text-sm font-bold text-secondary-700 shadow-sm transition-all duration-200 rounded-lg border border-secondary-300 px-4 py-2 hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 pointer-events-none cursor-not-allowed"
+  name="page"
+  value="<%= direction == 'previous' ? 0 : 2 %>"
+>
+  <% if direction == 'previous' %>
+    <svg class="h-5 w-5 mr-2 -ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+    </svg>
+    Previous
+  <% else %>
+    Next
+    <svg class="h-5 w-5 ml-2 -mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+    </svg>
+  <% end %>
+</button>

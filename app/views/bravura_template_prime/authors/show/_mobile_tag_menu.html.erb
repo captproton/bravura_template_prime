@@ -1,0 +1,22 @@
+<%# app/views/bravura_template_prime/authors/show/_mobile_tag_menu.html.erb %>
+<details class="menu-details lg:hidden mt-6">
+  <summary class="flex w-full cursor-pointer items-center justify-between text-base font-semibold text-secondary-900 rounded-lg p-3 border border-secondary-200 hover:bg-secondary-50">
+    <span>View Tags</span>
+    <svg class="h-5 w-5 text-secondary-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+    </svg>
+  </summary>
+  <div class="mt-2 space-y-1 bg-white border border-secondary-200 rounded-lg shadow-sm">
+    <%= link_to author_path(@author), class: "block px-4 py-2 text-sm text-secondary-700 hover:bg-secondary-50 #{@selected_tag.nil? ? 'bg-secondary-100' : ''}" do %>
+      <span>All Tags</span>
+      <span class="float-right bg-secondary-200 text-xs rounded-full py-0.5 px-2"><%= @author.posts.count %></span>
+    <% end %>
+    
+    <% @tags.each do |tag| %>
+      <%= link_to tag_author_path(@author, tag.name), class: "block px-4 py-2 text-sm text-secondary-700 hover:bg-secondary-50 #{@selected_tag == tag.name ? 'bg-secondary-100' : ''}" do %>
+        <span><%= tag.name %></span>
+        <span class="float-right bg-secondary-200 text-xs rounded-full py-0.5 px-2"><%= tag.taggings_count %></span>
+      <% end %>
+    <% end %>
+  </div>
+</details>
