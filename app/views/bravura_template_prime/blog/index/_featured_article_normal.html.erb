@@ -14,7 +14,7 @@
 						<span class="sr-only">
 							<%= article.author.name %>
 						</span>
-						<%= image_tag(article.author.avatar.attached? ? url_for(article.author.avatar) : asset_path('default_avatar.jpg'),
+						<%= image_tag(article.author.avatar.attached? ? url_for(article.author.avatar) : asset_path("bravura_template_prime/default_avatar.jpg"),
 							alt: article.author.name,
 							class: "h-5 w-5 mr-2 rounded-full") %>
 					<% end %>
