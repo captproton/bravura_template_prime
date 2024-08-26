@@ -1,4 +1,3 @@
-# lib/bravura_template_prime/engine.rb
 module BravuraTemplatePrime
   class Engine < ::Rails::Engine
     isolate_namespace BravuraTemplatePrime
@@ -10,9 +9,9 @@ module BravuraTemplatePrime
     initializer "bravura_template_prime.assets" do |app|
       # Add the engine's assets to the asset path
       app.config.assets.paths << root.join("app/assets")
-
-      # Explicitly add the images directory
       app.config.assets.paths << root.join("app/assets/images")
+      app.config.assets.paths << root.join("app/assets/stylesheets")
+      app.config.assets.paths << root.join("app/javascript")
 
       # Precompile additional assets
       app.config.assets.precompile += %w[ bravura_template_prime/application.css bravura_template_prime/application.js ]
@@ -29,8 +28,6 @@ module BravuraTemplatePrime
     # Set up autoload paths
     config.autoload_paths << root.join("app")
     config.autoload_paths << root.join("app", "presenters")
-
-    # Add the decorators directory to the autoload paths
     config.autoload_paths += %W[#{config.root}/app/decorators]
     config.autoload_paths += %W[#{config.root}/app/decorators/controllers]
 

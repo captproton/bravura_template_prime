@@ -33,5 +33,11 @@ RSpec.describe BravuraTemplatePrime::Engine do
         BravuraTemplatePrime::Engine.root.join("app")
       )
     end
+
+    it "includes the correct JavaScript path" do
+      expect(Rails.application.config.assets.paths).to include(
+        BravuraTemplatePrime::Engine.root.join("app/javascript")
+      )
+    end
   end
 end
