@@ -12,9 +12,13 @@
                   sizes: "(max-width: 599px) 480px, (max-width: 1199px) 800px, 1200px", 
                   class: "h-full w-full object-cover" %>
   <% else %>
-    <%= image_tag "bravura_template_prime/default_avatar.jpg",
+    <%#= image_tag "bravura_template_prime/default_avatar.jpg",
                   alt: author.name, 
                   class: "h-full w-full object-cover" %>
+                  <%# FIXME: path for image above is not working %>
+    <%= image_tag "https://images.unsplash.com/photo-1590086782957-93c06ef21604?w=300&h=300&fit=crop", 
+              alt: "Man wearing green polo shirt", 
+              class: "h-full w-full object-cover" %>                  
   <% end %>
 <% end %>
 
