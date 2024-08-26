@@ -7,10 +7,10 @@ module BravuraTemplatePrime
     end
 
     initializer "bravura_template_prime.assets" do |app|
-      app.config.assets.paths << root.join("app/assets")
-      app.config.assets.paths << root.join("app/assets/images")
-      app.config.assets.paths << root.join("app/assets/stylesheets")
-      app.config.assets.paths << root.join("app/javascript")
+      app.config.assets.paths << root.join("app", "assets")
+      app.config.assets.paths << root.join("app", "assets", "images")
+      app.config.assets.paths << root.join("app", "assets", "stylesheets")
+      app.config.assets.paths << root.join("app", "javascript")
 
       # Precompile all CSS and JS files in the bravura_template_prime directory
       app.config.assets.precompile += %w[ bravura_template_prime/**/*.css bravura_template_prime/**/*.js ]
@@ -18,7 +18,6 @@ module BravuraTemplatePrime
       # Precompile all images in the bravura_template_prime directory
       app.config.assets.precompile += %w[ bravura_template_prime/**/*.png bravura_template_prime/**/*.jpg bravura_template_prime/**/*.gif bravura_template_prime/**/*.svg ]
     end
-
     # Configure generators
     config.generators do |g|
       g.test_framework :rspec
