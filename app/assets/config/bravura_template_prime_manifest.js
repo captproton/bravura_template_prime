@@ -4,4 +4,4 @@
 //= link_directory ../images .gif
 //= link_directory ../images .svg
 //= link_directory ../stylesheets/bravura_template_prime .css
-//= link ../../javascript/bravura_template_prime/application.js
+//= link_directory ../../javascript/bravura_template_prime .js
