@@ -1,15 +1,16 @@
 GIT
   remote: https://github.com/captproton/bravura_template_base.git
-  revision: 1a8aafea45c668561c97ec77f301b55c45ea2b01
+  revision: 698af6c593404822e6881cb6f382bad19ad3c805
   branch: develop
   specs:
     bravura_template_base (0.2.1)
+      pagy (~> 9.0)
       rails (>= 7.1.3.4)
 
 PATH
   remote: .
   specs:
-    bravura_template_prime (0.3.1)
+    bravura_template_prime (0.3.2)
       bravura_template_base (>= 0.1.0)
       rails (>= 7.1.1)
 
@@ -164,6 +165,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
+    pagy (9.0.6)
     parallel (1.26.3)
     parser (3.3.4.2)
       ast (~> 2.4.1)
