@@ -6,7 +6,7 @@ module BravuraTemplatePrime
       BravuraTemplateBase.register_template(:bravura_template_prime)
     end
 
-    initializer 'bravura_template_prime.action_controller' do
+    initializer "bravura_template_prime.action_controller" do
       ActiveSupport.on_load :action_controller do
         helper BravuraTemplatePrime::AuthorsHelper
         helper BravuraTemplatePrime::BlogHelper
@@ -20,17 +20,17 @@ module BravuraTemplatePrime
       app.config.assets.paths << root.join("app", "javascript")
 
       # Precompile all CSS and JS files in the bravura_template_prime directory
-      app.config.assets.precompile += Dir[Rails.root.join('app/assets/stylesheets/bravura_template_prime/**/*.css')].map do |path|
-        path.sub(Rails.root.join('app/assets/stylesheets/').to_s, '')
+      app.config.assets.precompile += Dir[Rails.root.join("app/assets/stylesheets/bravura_template_prime/**/*.css")].map do |path|
+        path.sub(Rails.root.join("app/assets/stylesheets/").to_s, "")
       end
 
-      app.config.assets.precompile += Dir[Rails.root.join('app/assets/javascripts/bravura_template_prime/**/*.js')].map do |path|
-        path.sub(Rails.root.join('app/assets/javascripts/').to_s, '')
+      app.config.assets.precompile += Dir[Rails.root.join("app/assets/javascripts/bravura_template_prime/**/*.js")].map do |path|
+        path.sub(Rails.root.join("app/assets/javascripts/").to_s, "")
       end
 
       # Precompile all images in the bravura_template_prime directory
-      app.config.assets.precompile += Dir[Rails.root.join('app/assets/images/bravura_template_prime/**/*.{png,jpg,gif,svg}')].map do |path|
-        path.sub(Rails.root.join('app/assets/images/').to_s, '')
+      app.config.assets.precompile += Dir[Rails.root.join("app/assets/images/bravura_template_prime/**/*.{png,jpg,gif,svg}")].map do |path|
+        path.sub(Rails.root.join("app/assets/images/").to_s, "")
       end
     end
 
