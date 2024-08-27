@@ -53,16 +53,12 @@
 						<div class="flex-shrink-0">
 							<%= link_to author_path(@article.author), class: "", data: { umami_event: "Clicked Link: #{author_path(@article.author)}", umami_href: author_path(@article.author) } do %>
 								<span class="sr-only"><%= @article.author.name %></span>
-								<% if @article.author.avatar.attached? %>
-									<%= image_tag @author.avatar, alt: @article.author.name, class: "h-8 w-8 mr-2 rounded-full" %>
-								<% else %>
-									<%#= image_tag "bravura_template_prime/default_avatar.jpg", alt: @article.author.name, class: "h-8 w-8 mr-2 rounded-full" %>
-									<%# FIXME: path for image above is not working %>
-									<%= image_tag "https://images.unsplash.com/photo-1590086782957-93c06ef21604?w=300&h=300&fit=crop", 
-              							alt: "Man wearing green polo shirt", 
-              							class: "h-full w-full object-cover" %>         
-								<% end %>
-							<% end %>
+									<%= image_tag avatar_url(author, 100), 
+										alt: author.name,
+										class: "inline-block h-16 w-16 flex-shrink-0 object-cover rounded-full lg:h-24 lg:w-24",
+										srcset: "#{avatar_url(author, 480)} 480w, #{avatar_url(author, 800)} 800w, #{avatar_url(author, 1200)} 1200w",
+										sizes: "(max-width: 599px) 480px, (max-width: 1199px) 800px, 1200px"
+									%>
 						</div>
 						<div>
 							<p class="text-sm font-semibold text-secondary-900">

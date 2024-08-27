@@ -5,3 +5,4 @@
 //= link_directory ../images .svg
 //= link_directory ../stylesheets/bravura_template_prime .css
 //= link_directory ../../javascript .js
+//= link bravura_template_prime/default_avatar.jpg

@@ -2,6 +2,9 @@
   <div class="text-sm font-medium">
     <div class="current-post-author flex items-center">
         <%# FIXME: image_tag needs  post.author.avatar_url to work %>
+      <%= image_tag(author_avatar_url(post.author, 5),
+          alt: post.author.name,
+          class: "h-5 w-5 mr-2 rounded-full") %>
       <%#= image_tag post.author.avatar_url, class: "h-8 w-8 mr-2 rounded-full", alt: post.author.name %>
       <span><%= link_to post.author.name, author_path(post.author) %></span>
     </div>
