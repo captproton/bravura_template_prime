@@ -6,6 +6,13 @@ module BravuraTemplatePrime
       BravuraTemplateBase.register_template(:bravura_template_prime)
     end
 
+    initializer 'bravura_template_prime.action_controller' do |app|
+      ActiveSupport.on_load :action_controller do
+        helper BravuraTemplatePrime::AuthorsHelper
+        helper BravuraTemplatePrime::BlogHelper
+      end
+    end
+
     initializer "bravura_template_prime.assets" do |app|
       app.config.assets.paths << root.join("app", "assets")
       app.config.assets.paths << root.join("app", "assets", "images")

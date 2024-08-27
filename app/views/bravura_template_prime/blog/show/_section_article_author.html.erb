@@ -4,15 +4,12 @@
     class: "h-24 w-24 shrink-0 overflow-hidden object-cover ring-1 ring-secondary-100 rounded-full",
     data: { umami_event: "Clicked Link: author_path(author)",
     umami_href: author_path(author) } do %>
-    <% if author.avatar.attached? %>
-      <%= image_tag author.avatar, alt: author.name, class: "inline-block h-16 w-16 flex-shrink-0 object-cover rounded-full lg:h-24 lg:w-24" %>
-    <% else %>
-      <%#= image_tag "bravura_template_prime/default_avatar.jpg", alt: "Default Avatar", class: "inline-block h-16 w-16 flex-shrink-0 object-cover rounded-full lg:h-24 lg:w-24" %>
-      <%# FIXME: path for image above is not working %>
-      <%= image_tag "https://images.unsplash.com/photo-1590086782957-93c06ef21604?w=300&h=300&fit=crop", 
-              alt: "Man wearing green polo shirt", 
-              class: "h-full w-full object-cover" %>         
-    <% end %>
+    <%= image_tag avatar_url(author, 100), 
+      alt: author.name,
+      class: "inline-block h-16 w-16 flex-shrink-0 object-cover rounded-full lg:h-24 lg:w-24",
+      srcset: "#{avatar_url(author, 480)} 480w, #{avatar_url(author, 800)} 800w, #{avatar_url(author, 1200)} 1200w",
+      sizes: "(max-width: 599px) 480px, (max-width: 1199px) 800px, 1200px"
+  %>
   <% end %>
   <div class="mt-6 text-center sm:ml-6 sm:mt-0 sm:text-left">
     <div class="flex items-start justify-center sm:justify-between">
