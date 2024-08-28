@@ -1,4 +1,13 @@
 <%= render 'bravura_template_prime/shared/hero' %>
+<%= @presenter.get("email_newsletter_setup.header_enabled") == true ? render(
+  partial: 'bravura_template_prime/shared/newsletter',
+  locals: {
+    section: 'header',
+    headline: @presenter.get("email_newsletter_setup.header_headline"),
+    subheadline: @presenter.get("email_newsletter_setup.header_text"),
+    disclaimer: @presenter.get("email_newsletter_setup.header_disclaimer")
+  }
+) : '' %>
 
 <section class="section normal-featured-articles-list bg-secondary-50 pb-12 sm:pb-16 lg:pb-20">
     <%= render 'bravura_template_prime/blog/featured_articles', articles: @posts.featured %>
@@ -14,4 +23,12 @@
   </div>
 </section>
 
-<%= render 'bravura_template_prime/shared/newsletter' %>
+<%= @presenter.get("email_newsletter_setup.footer_enabled") == true ? render(
+  partial: 'bravura_template_prime/shared/newsletter',
+  locals: {
+    section: 'footer',  # Note: Changed from 'header' to 'footer'
+    headline: @presenter.get("email_newsletter_setup.footer_headline"),
+    subheadline: @presenter.get("email_newsletter_setup.footer_text"),
+    disclaimer: @presenter.get("email_newsletter_setup.footer_disclaimer")
+  }
+) : '' %>
