@@ -1,20 +1,23 @@
+<%# app/views/bravura_template_prime/blog/_table_of_contents.html.erb %>
 <aside class="lg:sticky lg:col-span-3 lg:top-28">
-  <h2 class="text-lg font-semibold text-secondary-900 mb-4">Table of Contents</h2>
+  <h2 class="text-xs font-bold uppercase tracking-widest text-secondary-500 mb-4">Table of Contents</h2>
   <nav class="relative mt-5" aria-label="Table of contents">
     <ul class="h-full max-h-[50vh] overflow-y-auto space-y-5 pb-20">
       <% if @table_of_contents && @table_of_contents.data.present? %>
-        <% JSON.parse(@table_of_contents.data).each do |item| %>
+        <% JSON.parse(@table_of_contents.data).each_with_index do |item, index| %>
           <li>
-            <a href="#<%= item['id'] %>" 
-               style="margin-left:calc(var(--toc-gap) * <%= item['level'] - 2 %>)" 
-               class="block text-base font-semibold hover:text-secondary-900 text-secondary-500"
-               data-umami-event="Clicked Link: #<%= item['id'] %>"
-               data-umami-href="#<%= item['id'] %>">
-              <%= item['title'].strip %>
-            </a>
+            <% is_active = index == 0 # Assume first item is active, adjust as needed %>
+            <%= link_to item['title'].strip, "##{item['id']}", 
+                class: "block text-base font-semibold hover:text-secondary-900 transition-colors duration-200 #{is_active ? 'text-secondary-900' : 'text-secondary-500'}",
+                style: "margin-left: calc(var(--toc-gap) * #{item['level'] - 1})",
+                data: {
+                  umami_event: "Clicked Link: ##{item['id']}",
+                  umami_href: "##{item['id']}"
+                } %>
           </li>
         <% end %>
       <% end %>
-    </ul>    <div class="pointer-events-none absolute h-16 w-full bg-gradient-to-b from-transparent to-white inset-x-0 bottom-0"></div>
+    </ul>
+    <div class="pointer-events-none absolute h-16 w-full bg-gradient-to-b from-transparent to-white inset-x-0 bottom-0"></div>
   </nav>
 </aside>
