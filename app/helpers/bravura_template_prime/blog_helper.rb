@@ -8,5 +8,9 @@ module BravuraTemplatePrime
         asset_path("bravura_template_prime/default_avatar.jpg")
       end
     end
+
+    def formatted_publish_date(article)
+      article.published_at&.strftime("%b %d, %Y")
+    end
   end
 end

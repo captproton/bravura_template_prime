@@ -1,27 +1,25 @@
-# spec/lib/bravura_template_prime/engine_spec.rb
 require 'rails_helper'
 
 RSpec.describe BravuraTemplatePrime::Engine do
   describe "registration with BravuraTemplateBase" do
-    # ** FIXME: nota bene: this is part of an older approach to use the bravura_template_base gem to switch templates
-    # We are using a different approach now, but this is still here for reference
-
-    # it "responds to register_template" do
-    #   expect(BravuraTemplateBase).to respond_to(:register_template)
-    # end
-
-    # it "registers the template with BravuraTemplateBase" do
-    #   expect(BravuraTemplateBase).to receive(:register_template).with(:bravura_template_prime)
-
-    #   # Simulate engine initialization
-    #   BravuraTemplatePrime::Engine.initializers.select { |i| i.name == "bravura_template_prime.register_template" }.each(&:run)
-    # end
-
     it "precompiles assets" do
-      expect(Rails.application.config.assets.precompile).to include(
-        "bravura_template_prime/application.css",
-        "bravura_template_prime/application.js"
-      )
+      css_assets = Dir[Rails.root.join('app/assets/stylesheets/bravura_template_prime/**/*.css')].map do |path|
+        path.sub(Rails.root.join('app/assets/stylesheets/').to_s, '')
+      end
+
+      js_assets = Dir[Rails.root.join('app/assets/javascripts/bravura_template_prime/**/*.js')].map do |path|
+        path.sub(Rails.root.join('app/assets/javascripts/').to_s, '')
+      end
+
+      precompiled_assets = Rails.application.config.assets.precompile
+
+      css_assets.each do |asset|
+        expect(precompiled_assets).to include(asset)
+      end
+
+      js_assets.each do |asset|
+        expect(precompiled_assets).to include(asset)
+      end
     end
 
     it "sets up RSpec as the test framework" do
