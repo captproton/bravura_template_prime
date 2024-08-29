@@ -1,0 +1,12 @@
+<%# bravura_template_prime/app/views/bravura_template_prime/subscribers/_form.html.erb %>
+<%= form_with(model: Subscriber.new, url: main_app.subscribers_path, local: true) do |form| %>
+  <div class="form-group">
+    <%= form.label :email %>
+    <%= form.email_field :email, class: "form-control" %>
+  </div>
+
+  <%= form.hidden_field :status, value: 'active' %>
+    <%= form.hidden_field :acquisition_source, value: 'website_form' %>
+
+  <%= form.submit "Subscribe", class: "bg-orange-500 text-white px-4 py-2 rounded" %>
+<% end %>

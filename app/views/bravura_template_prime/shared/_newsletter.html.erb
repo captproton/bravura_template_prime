@@ -19,21 +19,10 @@
     <input type="hidden" name="newsletterEmailVerification" value="true" form="newsletter-in-<%= section %>-wrapper-form" />
     
     <div class="newsletter-form-wrapper relative max-w-xl mx-auto mt-12">
-      <div class="absolute -inset-2">
-        <div class="h-full w-full rotate-180 opacity-30 blur-lg bg-conic-gradient mx-auto" style="filter:blur(16px)"></div>
-      </div>
-        <%= form_with(url: subscribers_path, method: :post, class: "newsletter-form relative", id: "newsletter-in-#{section}-wrapper-form", local: true) do |form| %>
-          <%= form.email_field :email, 
-              placeholder: "Enter your fancy email address", 
-              class: "newsletter-email block w-full bg-white text-base font-medium text-secondary-900 rounded-cta-button-radius border border-primary-100 px-4 py-3 focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:py-5", 
-              required: true, 
-              aria: { label: "Email" } %>
-          
-          <div class="newsletter-subscribe-button mt-4 sm:absolute sm:flex sm:items-center sm:inset-y-0 sm:right-0 sm:mt-0 sm:pr-2">
-            <%= form.submit "Subscribe to newsletter", 
-                class: "inline-flex w-full items-center justify-center bg-primary-500 text-base font-bold text-primary-50 shadow-sm rounded-cta-button-radius border border-transparent px-5 py-3 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-secondary-900 focus:ring-offset-2 sm:w-auto" %>
-          </div>
-      <% end %>
+      <%= render_subscriber_form %>
+  
+        
+
     </div>
     <p class="newsletter-spam-notice text-sm font-medium text-secondary-500 mt-6 text-center"><%= disclaimer %></p>
     </div>
