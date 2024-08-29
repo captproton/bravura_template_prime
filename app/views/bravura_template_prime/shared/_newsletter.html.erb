@@ -12,17 +12,10 @@
       <p class="newsletter-subheadline max-w-md text-base font-medium text-secondary-500 mx-auto mt-5"><%= subheadline %></p>
     </div>
     
-    <input type="hidden" name="pageUrl" form="newsletter-in-<%= section %>-wrapper-form" value="/" />
-    <input type="hidden" name="publicationId" value="396826319785034317" form="newsletter-in-<%= section %>-wrapper-form" />
-    <input type="hidden" name="webhookUrl" value="" form="newsletter-in-<%= section %>-wrapper-form" />
-    <input type="hidden" name="webhookBearerToken" value="" form="newsletter-in-<%= section %>-wrapper-form" />
-    <input type="hidden" name="newsletterEmailVerification" value="true" form="newsletter-in-<%= section %>-wrapper-form" />
+   
     
     <div class="newsletter-form-wrapper relative max-w-xl mx-auto mt-12">
       <%= render_subscriber_form %>
-  
-        
-
     </div>
     <p class="newsletter-spam-notice text-sm font-medium text-secondary-500 mt-6 text-center"><%= disclaimer %></p>
     </div>

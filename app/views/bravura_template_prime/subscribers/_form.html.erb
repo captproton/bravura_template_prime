@@ -1,12 +1,17 @@
 <%# bravura_template_prime/app/views/bravura_template_prime/subscribers/_form.html.erb %>
-<%= form_with(model: Subscriber.new, url: main_app.subscribers_path, local: true) do |form| %>
+<%= form_with(model: Subscriber.new, url: main_app.subscribers_path, local: true,  class: "newsletter-form relative") do |form| %>
   <div class="form-group">
-    <%= form.label :email %>
-    <%= form.email_field :email, class: "form-control" %>
+    <%= form.email_field :email, 
+      class: "form-control",
+      placeholder: "Enter your email address",
+      class: "newsletter-email block w-full bg-white text-base font-medium text-secondary-900 rounded-cta-button-radius border border-primary-100 px-4 py-3 focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:py-5",
+      required: true
+    %>
   </div>
 
-  <%= form.hidden_field :status, value: 'active' %>
-    <%= form.hidden_field :acquisition_source, value: 'website_form' %>
-
-  <%= form.submit "Subscribe", class: "bg-orange-500 text-white px-4 py-2 rounded" %>
+  <div class="newsletter-subscribe-button mt-4 sm:absolute sm:flex sm:items-center sm:inset-y-0 sm:right-0 sm:mt-0 sm:pr-2">
+    <%= form.submit "Subscribe to the newsletter", 
+      class: "inline-flex w-full items-center justify-center bg-primary-500 text-base font-bold text-primary-50 shadow-sm rounded-cta-button-radius border border-transparent px-5 py-3 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-secondary-900 focus:ring-offset-2 sm:w-auto" 
+    %>
+  </div>
 <% end %>
