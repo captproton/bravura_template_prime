@@ -2,10 +2,6 @@ module BravuraTemplatePrime
   class Engine < ::Rails::Engine
     isolate_namespace BravuraTemplatePrime
 
-    config.to_prepare do
-      ::Subscriber # Reference the Subscriber model to ensure it's loaded
-    end
-
     initializer "bravura_template_prime.register_template" do
       BravuraTemplateBase.register_template(:bravura_template_prime)
     end
