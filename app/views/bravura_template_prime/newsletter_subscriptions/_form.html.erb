@@ -1,8 +1,8 @@
 <!-- app/views/bravura_template_prime/newsletter_subscriptions/_form.html.erb -->
-<%= form_with(model: newsletter_subscription, id: "newsletter_form", class: "newsletter-form relative") do |form| %>
-  <% if newsletter_subscription.errors.any? %>
+<%= form_with(model: Subscriber.new, url: subscribers_path, id: "newsletter_form", class: "newsletter-form relative") do |form| %>
+  <% if form.object.errors.any? %>
     <div class="error-message text-red-500 mb-2">
-      <%= newsletter_subscription.errors.full_messages.to_sentence %>
+      <%= form.object.errors.full_messages.to_sentence %>
     </div>
   <% end %>
 
