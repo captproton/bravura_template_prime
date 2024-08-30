@@ -1,0 +1,11 @@
+<%= turbo_stream.update "search_results" do %>
+  <div class="py-2">
+    <% if @results.any? %>
+      <% @results.each do |result| %>
+        <%= link_to result.title, main_app.post_path(result), class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" %>
+      <% end %>
+    <% else %>
+      <p class="px-4 py-2 text-sm text-gray-500">No results found.</p>
+    <% end %>
+  </div>
+<% end %>
