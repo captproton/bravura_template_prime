@@ -11,7 +11,7 @@
   }
 ) : '' %>
 
-<% unless @query.present? %>
+<% unless @query.present? or @tag.present? %>  
   <section class="section normal-featured-articles-list bg-secondary-50 pb-12 sm:pb-16 lg:pb-20">
     <%= render 'bravura_template_prime/blog/featured_articles', articles: @featured_posts %>
   </section>
