@@ -1,4 +1,6 @@
 <%= render 'bravura_template_prime/shared/hero' %>
+<%= render 'bravura_template_prime/blog/search_form' %>
+
 <%= @presenter.get("email_newsletter_setup.header_enabled") == true ? render(
   partial: 'bravura_template_prime/shared/newsletter',
   locals: {
@@ -9,16 +11,20 @@
   }
 ) : '' %>
 
-<section class="section normal-featured-articles-list bg-secondary-50 pb-12 sm:pb-16 lg:pb-20">
-    <%= render 'bravura_template_prime/blog/featured_articles', articles: @posts.featured %>
-</section>
+<% unless @query.present? %>
+  <section class="section normal-featured-articles-list bg-secondary-50 pb-12 sm:pb-16 lg:pb-20">
+    <%= render 'bravura_template_prime/blog/featured_articles', articles: @featured_posts %>
+  </section>
+<% end %>
 
 <section id="all-posts" class="section normal-articles-list bg-white py-12 sm:py-16 lg:py-20">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="text-xl font-bold text-secondary-900 sm:text-2xl">All articles</h2>
+    <h2 class="text-xl font-bold text-secondary-900 sm:text-2xl">
+      <%= @query.present? ? "Search Results for '#{@query}'" : "All articles" %>
+    </h2>
     <div class="relative grid grid-cols-1 items-start gap-16 mt-8 lg:grid-cols-12">
       <%= render 'bravura_template_prime/shared/categories_sidebar' %>
-      <%= render 'bravura_template_prime/blog/articles_grid' %>
+      <%= render 'bravura_template_prime/blog/articles_grid', articles: @posts %>
     </div>
   </div>
 </section>
