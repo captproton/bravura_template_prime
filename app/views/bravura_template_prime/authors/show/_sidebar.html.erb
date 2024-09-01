@@ -1,6 +1,6 @@
 <%# app/views/authors/_sidebar.html.erb %>
 <div class="categories-sidebar lg:sticky lg:col-span-3 lg:top-28">
-  <p class="hidden text-xs font-bold uppercase tracking-widest text-secondary-500 lg:block">Tags</p>
+  <p class="hidden text-xs font-bold uppercase tracking-widest text-secondary-500 lg:block">Tags34</p>
 
   <nav class="max-h-[50vh] overflow-y-auto mt-5 space-y-1 hidden lg:block" aria-label="Sidebar">
     <%= link_to author_path(@author), class: "group flex w-full items-center text-sm font-medium rounded-lg px-3 py-2 #{@selected_tag.nil? ? 'bg-secondary-100 text-secondary-900' : 'text-secondary-500 hover:bg-secondary-100 hover:text-secondary-900'}", aria: { current: @selected_tag.nil? ? 'page' : nil } do %>
