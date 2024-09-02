@@ -10,5 +10,4 @@ module BravuraTemplatePrime
       "0.5rem"
     end
   end
-
 end
