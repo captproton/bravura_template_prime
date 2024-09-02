@@ -1,31 +1,24 @@
 <%# spec/dummy/app/views/layouts/application.html.erb %>
 <!DOCTYPE html>
-<%= content_tag :html, dir: "ltr", lang: "en", class: "scroll-smooth antialiased selection:bg-primary-500 selection:text-primary-50", data: { theme: @blog_theme, graytheme: "gray#{@shade_of_gray}", mode: @site_mode } do %>
-
+<%= content_tag :html,
+  dir: "ltr",
+  lang: "en",
+  class: "scroll-smooth antialiased selection:bg-primary-500 selection:text-primary-50",
+  data: {
+    theme: BlogTheme.find(@presenter.get("design.blog_theme_id")).name,
+    graytheme: ShadesOfGray.find(@presenter.get("design.shades_of_gray_id")).name,
+    mode: SiteMode.find(@presenter.get("design.site_mode_id")).site_theme
+  } do %>
   <head>
-    <%# content that is common to all templates goes here in the blog_head %>
-    <%= render partial: "/bravura_template_prime/shared/blog_head", locals: {article: @article, current_account: current_account} %>
-    <!-- Include your common stylesheets, meta tags, etc. here -->
-
+    <%= render "bravura_template_prime/shared/head" %>
   </head>
-  <body class="overflow-x-hidden bg-white font-sans text-secondary-900 antialiased">
-		<div style="position:fixed;z-index:9999;top:16px;left:16px;right:16px;bottom:16px;pointer-events:none"></div>
-      <!-- Site navigation content goes here -->
-      <%= render partial: "/shared/top_nav" %>
-
-      <main>
-        <!-- Main content goes here -->
-        <%= yield %>
-        <%= render partial: "/shared/cta" %>
-      </main>
-
-      <footer>
-        <!-- Footer content goes here -->
-        <%= render partial: "/shared/footer" %>
-      </footer>
-    </div>
-    <!-- Include your common JavaScript files, scripts, etc. here -->
-    <%= javascript_include_tag 'application' %>
-    <%=render partial: "/shared/javascript" %>
+  <body class="flex min-h-screen flex-col justify-between">
+    <%= render 'bravura_template_prime/shared/header' %>
+    <%= render 'bravura_template_prime/shared/notifications' %>
+    <main class="main-wrapper flex-1" role="main">
+      <%= yield %>
+    </main>
+    <%= render 'bravura_template_prime/shared/footer' %>
+    <%= yield :local_javascript %>
   </body>
 <% end %>
