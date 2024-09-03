@@ -4,7 +4,12 @@
 <section class="normal-post-content bg-white py-12 sm:py-16 lg:py-20">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 items-start gap-y-12 gap-x-16 lg:grid-cols-12">
-      <%= render 'bravura_template_prime/blog/table_of_contents' %>
+      <aside class="lg:sticky lg:col-span-3 lg:top-28">
+        <%= render 'bravura_template_prime/blog/table_of_contents' %>
+        <hr class="mt-8 border-secondary-200">
+        <%= render 'bravura_template_prime/blog/show/article_sharing_links', article: @post %>
+      </aside>
+
 
       <div class="lg:col-span-9">
         <div class="prose prose-lg prose-primary">
