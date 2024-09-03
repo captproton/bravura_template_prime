@@ -1,7 +1,7 @@
 <div class="normal-featured-article featured-article group relative sm:flex sm:items-start">
 	<div
     class="h-auto w-full flex-shrink-0 overflow-hidden bg-secondary-200 rounded-lg sm:w-72 lg:w-96 xl:w-72">
-		<%= link_to blog_path(article), class: "article-cover aspect-w-16 aspect-h-8 block", data: { umami_event: "Clicked Link: #{blog_path(article)}", umami_href: blog_path(article) } do %>
+		<%#= link_to blog_path(article), class: "article-cover aspect-w-16 aspect-h-8 block", data: { umami_event: "Clicked Link: #{blog_path(article)}", umami_href: blog_path(article) } do %>
 		  <span class="sr-only"><%= article.title %></span>
 		  <%= image_tag url_for(article.cover), alt: article.title, class: "h-full w-full object-cover transition-all duration-100 group-hover:opacity-75" %>
     <% end %>
@@ -32,7 +32,7 @@
         </time>
       </p>
 		</div>
-		<%= link_to blog_path(article), class: "block mt-4", data: { umami_event: "Clicked Link: #{blog_path(article)}", umami_href: blog_path(article) } do %>
+		<%#= link_to blog_path(article), class: "block mt-4", data: { umami_event: "Clicked Link: #{blog_path(article)}", umami_href: blog_path(article) } do %>
 			<h3 class="article-title text-xl font-bold tracking-tight text-secondary-900">
 				<%= article.title %>
 			</h3>

@@ -8,7 +8,7 @@
       <div class="grid max-w-md grid-cols-1 gap-x-8 gap-y-12 mx-auto mt-12 lg:max-w-none lg:grid-cols-3">
           <% @related_posts.each do |related_post| %>
             <div class="normal-article group relative">
-              <%= link_to blog_path(related_post), class: "article-cover aspect-w-16 aspect-h-8 block overflow-hidden bg-secondary-200 rounded-lg", 'umami-event': "Clicked Link: #{blog_path(related_post)}", 'umami-href': blog_path(related_post) do %>
+              <%#= link_to blog_path(related_post), class: "article-cover aspect-w-16 aspect-h-8 block overflow-hidden bg-secondary-200 rounded-lg", 'umami-event': "Clicked Link: #{blog_path(related_post)}", 'umami-href': blog_path(related_post) do %>
                 <%= image_tag related_post.cover, class: "h-full w-full object-cover transition-all duration-100 group-hover:opacity-75", alt: "#{related_post.title} cover image"  %>
               <% end %>
               <div class="mt-6">
@@ -40,7 +40,7 @@
                   <time datetime="<%= related_post.published_at.iso8601 %>"><%= related_post.published_at.strftime("%b %-d, %Y") %></time>
                 </div>
 
-                <%= link_to blog_path(related_post), class: "block mt-4", 'umami-event': "Clicked Link: #{blog_path(related_post)}", 'umami-href': blog_path(related_post) do %>
+                <%#= link_to blog_path(related_post), class: "block mt-4", 'umami-event': "Clicked Link: #{blog_path(related_post)}", 'umami-href': blog_path(related_post) do %>
                   <h3 class="article-title text-xl font-bold tracking-tight text-secondary-900"><%= related_post.title %></h3>
                 <% end %>
 
