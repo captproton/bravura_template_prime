@@ -3,12 +3,12 @@
     <h2 class="text-xl font-bold text-secondary-900 sm:text-2xl">Featured posts</h2>
     <div class="featured-articles-wrapper grid grid-cols-1 gap-8 mt-8 xl:grid-cols-2">
       <!-- Main featured article -->
-      <%= render '/bravura_template_prime/blog/index/featured_article_main', article: articles.first %>
+      <%#= render '/bravura_template_prime/blog/index/featured_article_main', article: articles.first %>
 
       <!-- Two smaller featured articles -->
       <div class="space-y-8">
         <% articles[1..2].each do |article| %>
-          <%= render '/bravura_template_prime/blog/index/featured_article_normal', article: article %>
+          <%#= render '/bravura_template_prime/blog/index/featured_article_normal', article: article %>
         <% end %>
       </div>
     </div>
