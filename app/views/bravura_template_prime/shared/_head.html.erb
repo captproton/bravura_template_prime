@@ -34,7 +34,7 @@
 <%= tag.meta name: "description", content: @presenter.get('general.meta_description') %>
 <%= tag.meta property: "og:title", content: @presenter.get("general.publication_name") %>
 <%= tag.meta property: "og:description", content: @presenter.get('general.meta_description') %>
-<%= tag.meta property: "og:image", content: url_for(@presenter.get('general.social_cover')) %>
+<%= tag.meta property: "og:image", content: @presenter.get('general.social_cover') %>
 <%= tag.meta property: "og:site_name", content: @presenter.get('general.publication_name') %>
 <%= tag.meta property: "og:type", content: "article" %>
 <%= csrf_meta_tags %>
