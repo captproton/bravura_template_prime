@@ -1,5 +1,5 @@
 <%
-      @logo_image_attachment = @gss.get("navigation.logo")
+      @logo_image_attachment = @presenter.get("navigation.logo")
 %>
 
 <div class="shrink-0">
@@ -8,7 +8,7 @@
     <% if  @logo_image_attachment.present? %>
       <%= image_tag(    
         url_for(@logo_image_attachment.variant(resize_to_limit: [1200, nil])), 
-        alt: "logo for #{@gss.get("general.publication_name")}" ,
+        alt: "logo for #{@presenter.get("general.publication_name")}" ,
         srcset: "#{url_for(@logo_image_attachment.variant(resize_to_limit: [480, nil]))} 480w, 
           #{url_for(@logo_image_attachment.variant(resize_to_limit: [800, nil]))} 800w, 
           #{url_for(@logo_image_attachment.variant(resize_to_limit: [1200, nil]))} 1200w",
@@ -17,7 +17,7 @@
       ) %>
     <% end %>
     <span class="text-2xl font-bold tracking-tight text-secondary-900">
-      <%= @gss.get("general.publication_name") %>
+      <%= @presenter.get("general.publication_name") %>
     </span>
   <% end %>
 </div>

@@ -1,6 +1,6 @@
 <%# hamburger menu %>
 <%
-  navigation = Settings::Navigation.find(@gss.get("navigation.id"))
+  navigation = Settings::Navigation.find(@presenter.get("navigation.id"))
   links = navigation.links.map do |link|
     {
       text: link.name,

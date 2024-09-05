@@ -1,5 +1,5 @@
 <%
-  footer = Settings::Footer.find(@gss.get("footer.id"))
+  footer = Settings::Footer.find(@presenter.get("footer.id"))
   links = footer.links.map do |link|
     {
       text: link.name,
