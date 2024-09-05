@@ -2,15 +2,15 @@
 
 <%
 social_links = [
-  { name: "Facebook", url: @presenter.get("general.facebook_url"), icon: "bravura_template_prime/facebook" },
-  { name: "Twitter/X", url: @presenter.get("general.x_url"), icon: "bravura_template_prime/twitter" },
-  { name: "Instagram", url: @presenter.get("general.instagram_url"), icon: "bravura_template_prime/instagram" },
-  { name: "LinkedIn", url: @presenter.get("general.linkedin_url"), icon: "bravura_template_prime/linkedin" },
-  { name: "Pinterest", url: @presenter.get("general.pinterest_url"), icon: "bravura_template_prime/pinterest" },
-  { name: "TikTok", url: @presenter.get("general.tiktok_url"), icon: "bravura_template_prime/tiktok" },
-  { name: "Telegram", url: @presenter.get("general.telegram_url"), icon: "bravura_template_prime/telegram" },
-  { name: "Mastodon", url: @presenter.get("general.mastodon_url"), icon: "bravura_template_prime/mastodon" },
-  { name: "YouTube", url: @presenter.get("general.youtube_url"), icon: "bravura_template_prime/youtube" }
+  { name: "Facebook", url: @gss.get("general.facebook_url"), icon: "bravura_template_prime/facebook" },
+  { name: "Twitter/X", url: @gss.get("general.x_url"), icon: "bravura_template_prime/twitter" },
+  { name: "Instagram", url: @gss.get("general.instagram_url"), icon: "bravura_template_prime/instagram" },
+  { name: "LinkedIn", url: @gss.get("general.linkedin_url"), icon: "bravura_template_prime/linkedin" },
+  { name: "Pinterest", url: @gss.get("general.pinterest_url"), icon: "bravura_template_prime/pinterest" },
+  { name: "TikTok", url: @gss.get("general.tiktok_url"), icon: "bravura_template_prime/tiktok" },
+  { name: "Telegram", url: @gss.get("general.telegram_url"), icon: "bravura_template_prime/telegram" },
+  { name: "Mastodon", url: @gss.get("general.mastodon_url"), icon: "bravura_template_prime/mastodon" },
+  { name: "YouTube", url: @gss.get("general.youtube_url"), icon: "bravura_template_prime/youtube" }
 ]
 %>
 
@@ -30,14 +30,14 @@ social_links = [
   <% end %>
 <% end %>
 			
-<% if @presenter.get("footer.rss_feed").present? %>
+<% if @gss.get("footer.rss_feed").present? %>
   <%= link_to "/_feather/rss.xml", class: "inline-flex h-10 w-10 items-center justify-center text-secondary-600 transition-all duration-200 rounded-full hover:bg-primary-50 hover:text-primary-700", target: "_blank", rel: "noopener", 'umami-event': "Clicked Link: /_feather/rss.xml", 'umami-href': "/_feather/rss.xml" do %>
     <span class="sr-only">RSS Feed</span>
     <%= inline_svg_tag 'icons/rss.svg', class: "h-6 w-6" %>
   <% end %>
 <% end %>
 
-<% if @presenter.get("footer.sitemap").present? %>
+<% if @gss.get("footer.sitemap").present? %>
     <%= link_to "/_feather/sitemap.xml", class: "inline-flex h-10 w-10 items-center justify-center text-secondary-600 transition-all duration-200 rounded-full hover:bg-primary-50 hover:text-primary-700", target: "_blank", rel: "noopener", 'umami-event': "Clicked Link: /_feather/sitemap.xml", 'umami-href': "/_feather/sitemap.xml" do %>
       <span class="sr-only">Sitemap</span>
       <%= inline_svg_tag 'icons/sitemap.svg', class: "h-6 w-6" %>

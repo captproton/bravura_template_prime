@@ -1,11 +1,11 @@
 <%
-  design_navigation_bar_id = @presenter.get('design.navigation_bar_id')
+  design_navigation_bar_id = @gss.get('design.navigation_bar_id')
   @current_navigation_bar = NavigationBar.find(design_navigation_bar_id)
   @navigation_style_classes = @current_navigation_bar.style_classes || "missed-navigation-classes" # Fallback to empty string if key not found for centered alignment
 %>
 
 <%
-  navigation = Settings::Navigation.find(@presenter.get("navigation.id"))
+  navigation = Settings::Navigation.find(@gss.get("navigation.id"))
   links = navigation.links.map do |link|
     {
       text: link.name,

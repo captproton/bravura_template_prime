@@ -5,9 +5,9 @@
   lang: "en",
   class: "scroll-smooth antialiased selection:bg-primary-500 selection:text-primary-50",
   data: {
-    theme: BlogTheme.find(@presenter.get("design.blog_theme_id")).name,
-    graytheme: ShadesOfGray.find(@presenter.get("design.shades_of_gray_id")).name,
-    mode: SiteMode.find(@presenter.get("design.site_mode_id")).site_theme
+    theme: BlogTheme.find(@gss.get("design.blog_theme_id")).name,
+    graytheme: ShadesOfGray.find(@gss.get("design.shades_of_gray_id")).name,
+    mode: SiteMode.find(@gss.get("design.site_mode_id")).site_theme
   } do %>
   <head>
     <%= render "bravura_template_prime/shared/head" %>
