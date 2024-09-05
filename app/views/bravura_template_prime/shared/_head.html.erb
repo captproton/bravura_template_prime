@@ -24,7 +24,7 @@
 %>
 
 <%= content_tag :title, @presenter.get("general.publication_name") %>
-<%= favicon_link_tag @presenter.get('general.favicon').present? ? rails_blob_url(@presenter.get('general.favicon')) : asset_path('default_favicon.png') %>
+<%= favicon_link_tag @presenter.get('general.favicon').present? ? @presenter.get('general.favicon') : asset_path('bravura_template_base/defaults/default_favicon.ico') %>
 <%= tag.meta charset: "utf-8" %>
 <%= tag.meta name: "viewport", content: "width=device-width,initial-scale=1" %>
 <%= tag.meta name: "twitter:card", content: "summary_large_image" %>
@@ -34,7 +34,7 @@
 <%= tag.meta name: "description", content: @presenter.get('general.meta_description') %>
 <%= tag.meta property: "og:title", content: @presenter.get("general.publication_name") %>
 <%= tag.meta property: "og:description", content: @presenter.get('general.meta_description') %>
-<%= tag.meta property: "og:image", content: url_for(@presenter.get('general.social_cover')) %>
+<%= tag.meta property: "og:image", content: @presenter.get('general.social_cover') %>
 <%= tag.meta property: "og:site_name", content: @presenter.get('general.publication_name') %>
 <%= tag.meta property: "og:type", content: "article" %>
 <%= csrf_meta_tags %>
