@@ -13,7 +13,12 @@
 
 <% unless @query.present? or @tag.present? %>  
   <section class="section normal-featured-articles-list bg-secondary-50 pb-12 sm:pb-16 lg:pb-20">
-    <%= render 'bravura_template_prime/blog/featured_articles', articles: @featured_posts %>
+    <%#= render 'bravura_template_prime/blog/featured_articles', articles: @featured_posts %>
+<% if @featured_or_recent.any? %>
+  <%= render 'bravura_template_prime/blog/featured_articles', articles: @featured_or_recent %>
+<% else %>
+  <%= render 'bravura_template_prime/blog/featured_articles_placeholder' %>
+<% end %>
   </section>
 <% end %>
 
