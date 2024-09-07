@@ -1,0 +1,32 @@
+<%# app/views/bravura_template_prime/shared/_site_search.html.erb %>
+<div class="search-container">
+  <input type="checkbox" id="search-toggle" class="hidden">
+  <div class="search-overlay fixed inset-0 z-50 bg-secondary-900 bg-opacity-50 hidden">
+    <div class="flex items-center justify-center min-h-screen">
+      <div class="bg-white w-full max-w-2xl p-6 rounded-lg shadow-lg relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+        <%= form_with(url: blog_index_path, method: :get, local: true, class: "flex") do |f| %>
+            <%= f.text_field :query, 
+                value: "", 
+                placeholder: "Search posts...", 
+                class: "flex-grow p-2 border rounded-l" %>
+            <%= f.submit "Search", 
+                name: nil, 
+                class: "bg-primary-500 text-white p-2 rounded-r cursor-pointer" %>  
+        <% end %>
+        </div>
+        <label for="search-toggle" class="absolute top-4 right-4 text-secondary-500 hover:text-secondary-700 cursor-pointer">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #search-toggle:checked ~ .search-overlay {
+    display: block;
+  }
+</style>
