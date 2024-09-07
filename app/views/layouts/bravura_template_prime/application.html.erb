@@ -20,5 +20,8 @@
     </main>
     <%= render 'bravura_template_prime/shared/footer' %>
     <%= yield :local_javascript %>
+    <% if @presenter.get("navigation.site_search") %>
+      <%= render 'bravura_template_prime/shared/site_search' %>
+    <% end %>
   </body>
 <% end %>
