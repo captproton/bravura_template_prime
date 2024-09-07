@@ -1,23 +1,30 @@
+<%# app/views/bravura_template_prime/shared/_logo.html.erb %>
 <%
-      @logo_image_attachment = @presenter.get("navigation.logo")
+  logo_text = @presenter.get("navigation.logo_text")
+  logo_image = @presenter.get("navigation.logo")
+  logo_link = @presenter.get("navigation.logo_link")
+  open_logo_link_in_same_tab = @presenter.get("navigation.open_logo_link_in_same_tab")
+  hide_logo_text = @presenter.get("navigation.hide_logo_text")
+  hide_logo_image = @presenter.get("navigation.hide_logo_image")
 %>
 
 <div class="shrink-0">
-
-  <%= link_to root_path, class: "logo flex items-center", data: { umami_event: "Clicked Link: /", umami_href: "/" } do %>
-    <% if  @logo_image_attachment.present? %>
-      <%= image_tag(    
-        url_for(@logo_image_attachment.variant(resize_to_limit: [1200, nil])), 
-        alt: "logo for #{@presenter.get("general.publication_name")}" ,
-        srcset: "#{url_for(@logo_image_attachment.variant(resize_to_limit: [480, nil]))} 480w, 
-          #{url_for(@logo_image_attachment.variant(resize_to_limit: [800, nil]))} 800w, 
-          #{url_for(@logo_image_attachment.variant(resize_to_limit: [1200, nil]))} 1200w",
+  <%= link_to logo_link, class: "logo flex items-center", target: open_logo_link_in_same_tab ? "_self" : "_blank", rel: "noopener", data: { umami_event: "Clicked Logo", umami_href: logo_link } do %>
+    <% if logo_image.present? && !hide_logo_image %>
+      <%= image_tag(
+        url_for(logo_image.variant(resize_to_limit: [1200, nil])),
+        alt: "logo for #{@presenter.get("general.publication_name")}",
+        srcset: "#{url_for(logo_image.variant(resize_to_limit: [480, nil]))} 480w,
+                 #{url_for(logo_image.variant(resize_to_limit: [800, nil]))} 800w,
+                 #{url_for(logo_image.variant(resize_to_limit: [1200, nil]))} 1200w",
         sizes: "(max-width: 599px) 480px, (max-width: 1199px) 800px, 1200px",
         class: "h-8 w-auto mr-1"
       ) %>
     <% end %>
-    <span class="text-2xl font-bold tracking-tight text-secondary-900">
-      <%= @presenter.get("general.publication_name") %>
-    </span>
+    <% unless hide_logo_text %>
+      <span class="text-2xl font-bold tracking-tight text-secondary-900">
+        <%= logo_text %>
+      </span>
+    <% end %>
   <% end %>
 </div>
