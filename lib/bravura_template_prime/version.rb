@@ -1,3 +1,3 @@
 module BravuraTemplatePrime
-  VERSION = "0.4.10"
+  VERSION = "0.4.110"
 end
