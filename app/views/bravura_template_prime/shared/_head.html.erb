@@ -1,53 +1,61 @@
-<%# FIXME: These variables should be placed better, 
-  but I need to figure it out later -- CT
-%>
+<%# app/views/bravura_template_prime/shared/_head.html.erb %>
+<%# FIXME: These variables should be placed better, but I need to figure it out later -- CT %>
 <%
-    # Button radius
-     button_radius = {
-      'rounded-none' => '0px',       # No border radius
-      'rounded-sm' => '0.125rem',    # Small border radius (2px)
-      'rounded-md' => '0.375rem',    # Medium border radius (6px)
-      'rounded-lg' => '0.5rem',      # Large border radius (8px)
-      'rounded-xl' => '0.75rem',     # Extra large border radius (12px)
-      'rounded-2xl' => '1rem',       # 2x extra large border radius (16px)
-      'rounded-3xl' => '1.5rem',     # 3x extra large border radius (24px)
-      'rounded-full' => '9999px'     # Full border radius (pill shape)
-    }
-    
-    button_style_id = @presenter.get("design.button_style_id")
-    button_style_classes = ButtonStyle.find(button_style_id).style_classes
-    cta_button_radius = button_radius.fetch(button_style_classes, '0px') # Fallback to '0px' if key not found
+# Button radius
+button_radius = {
+  'rounded-none' => '0px',    # No border radius
+  'rounded-sm' => '0.125rem', # Small border radius (2px)
+  'rounded-md' => '0.375rem', # Medium border radius (6px)
+  'rounded-lg' => '0.5rem',   # Large border radius (8px)
+  'rounded-xl' => '0.75rem',  # Extra large border radius (12px)
+  'rounded-2xl' => '1rem',    # 2x extra large border radius (16px)
+  'rounded-3xl' => '1.5rem',  # 3x extra large border radius (24px)
+  'rounded-full' => '9999px'  # Full border radius (pill shape)
+}
+button_style_id = @presenter.get("design.button_style_id")
+button_style_classes = ButtonStyle.find(button_style_id).style_classes
+cta_button_radius = button_radius.fetch(button_style_classes, '0px') # Fallback to '0px' if key not found
 
-    # Navigation alignment
-    navigation_bar_id = @presenter.get("design.navigation_bar_id")
-    @navigation_style_classes = NavigationBar.find(navigation_bar_id).style_classes
+# Navigation alignment
+navigation_bar_id = @presenter.get("design.navigation_bar_id")
+@navigation_style_classes = NavigationBar.find(navigation_bar_id).style_classes
+
+# Set meta tags
+set_meta_tags(
+  site: @presenter.get("general.publication_name"),
+  title: @presenter.get("general.meta_title"),
+  description: @presenter.get("general.meta_description"),
+  keywords: @presenter.get("general.keywords"),
+  charset: "utf-8",
+  viewport: "width=device-width,initial-scale=1",
+  og: {
+    title: :title,
+    description: :description,
+    type: 'website',
+    url: request.original_url,
+    image: @presenter.image_path("general.social_cover"),
+    site_name: @presenter.get("general.publication_name"),
+    locale: @presenter.get('general.open_graph_locale')
+  },
+  twitter: {
+    card: "summary_large_image"
+  },
+  canonical: request.base_url,
+  robots: "index,follow"
+)
 %>
 
-<%= content_tag :title, @presenter.get("general.publication_name") %>
+<%= display_meta_tags %>
 <%# FIXME: running out of time. Make the custom favicon_link_tag link work later. %>
 <%#= favicon_link_tag @presenter.get('general.favicon').present? ? @presenter.get('general.favicon') : asset_path('bravura_template_base/defaults/default_favicon.ico') %>
 <%= favicon_link_tag asset_path('bravura_template_base/defaults/default_favicon.ico') %>
-<%= tag.meta charset: "utf-8" %>
-<%= tag.meta name: "viewport", content: "width=device-width,initial-scale=1" %>
-<%= tag.meta name: "twitter:card", content: "summary_large_image" %>
-<%= tag.meta property: "og:type", content: "website" %>
-<%= tag.meta property: "og:locale", content: @presenter.get('general.open_graph_locale') %>
-<%= tag.meta name: "robots", content: "index,follow" %>
-<%= tag.meta name: "description", content: @presenter.get('general.meta_description') %>
-<%= tag.meta property: "og:title", content: @presenter.get("general.publication_name") %>
-<%= tag.meta property: "og:description", content: @presenter.get('general.meta_description') %>
-<%= tag.meta property: "og:image", content: @presenter.get('general.social_cover') %>
-<%= tag.meta property: "og:site_name", content: @presenter.get('general.publication_name') %>
-<%= tag.meta property: "og:type", content: "article" %>
 <%= csrf_meta_tags %>
 <%= csp_meta_tag %>
 <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
 <%= stylesheet_link_tag "thefour", media: "all", "data-turbo-track": "reload" %>
 <link rel="preconnect" href="https://fonts.bunny.net">
-<link rel="stylesheet" href="https://fonts.bunny.net/css?family=inter:100,200,300,400,500,600,700,800,900&amp;display=swap">
-<link rel="canonical" href="<%= request.base_url %>">
-
+<link rel="stylesheet" href="https://fonts.bunny.net/css?family=inter:100,200,300,400,500,600,700,800,900&display=swap">
 <style>
   :root {
     --headings-font-family: <%= @presenter.get("design.heading_font") %>, sans-serif, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
