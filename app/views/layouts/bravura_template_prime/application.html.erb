@@ -1,12 +1,16 @@
 <%# app/views/layouts/bravura_template_prime/application.html.erb %>
+
+<% gray_shade_name = ShadesOfGray.find(@presenter.get("design.shades_of_gray_id")).name.downcase.capitalize
+gray_shade_class = "gray#{gray_shade_name}" %>
 <!DOCTYPE html>
+
 <%= content_tag :html,
   dir: "ltr",
   lang: "en",
   class: "scroll-smooth antialiased selection:bg-primary-500 selection:text-primary-50",
   data: {
     theme: BlogTheme.find(@presenter.get("design.blog_theme_id")).name,
-    graytheme: ShadesOfGray.find(@presenter.get("design.shades_of_gray_id")).name,
+    graytheme: gray_shade_class,
     mode: SiteMode.find(@presenter.get("design.site_mode_id")).site_theme
   } do %>
   <head>
