@@ -38,7 +38,7 @@
 			<%= article.title %>
 		</h3>
 		<p class="article-excerpt text-base font-medium text-secondary-500 line-clamp-3 mt-3">
-			<%= article.excerpt %>
+			<%= truncate(article.excerpt.to_plain_text, length: 95, omission: "...") %>
 		</p>
 		<% end %>
 		<%# FIXME: We are not using the blog_category_path or blog_category controller. Fix the link to filter the posts like the list of tags does in the left aside on the blog index  %>
