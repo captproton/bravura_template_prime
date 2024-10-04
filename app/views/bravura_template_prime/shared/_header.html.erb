@@ -1,18 +1,81 @@
 <%# app/views/bravura_template_prime/shared/_header.html.erb %>
-<header class="bg-white shadow-sm">
-  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between h-16">
+
+<%#  %>
+<header class="navbar sticky z-20 h-16 bg-white/90 shadow-sm backdrop-blur-lg top-0 py-3">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="flex items-center justify-between">
       <%= render 'bravura_template_prime/shared/logo' %>
-      <div class="flex items-center">
+
       <%= render "/bravura_template_prime/shared/nav_links" %>
-        <% if @presenter.get("navigation.site_search") %>
-          <label for="search-toggle" class="ml-4 text-secondary-500 hover:text-secondary-700 cursor-pointer">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-            </svg>
-          </label>
-        <% end %>
-      </div>
-    </div>
-  </nav>
+
+			<div class="nav-links-wrapper-right flex items-center justify-end gap-3 lg:gap-4">
+				<div class="flex items-center justify-end gap-3 lg:gap-2">
+					<button
+						type="button"
+						class="site-search-btn inline-flex h-10 w-10 items-center justify-center text-secondary-600 transition-all duration-200 rounded-lg hover:bg-secondary-100 hover:text-secondary-900 focus:outline-none focus:ring-2 focus:ring-secondary-300 focus:ring-offset-2"
+						aria-label="Search"
+					>
+						<span class="sr-only">Search</span>
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+							<path
+								d="M21 21L17.364 17.364M17.364 17.364C18.9926 15.7353 20 13.4853 20 11C20 6.02944 15.9706 2 11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20C13.4853 20 15.7353 18.9926 17.364 17.364Z"
+								stroke-width="1.5"
+								stroke-linecap="round"
+							></path>
+						</svg>
+					</button>
+				</div>
+				<div class="hidden sm:flex sm:items-center sm:gap-4"></div>
+				<div class="flex lg:hidden">
+					<details class="menu-details">
+						<summary
+							class="inline-flex h-10 w-10 cursor-pointer items-center justify-center text-secondary-600 transition-all duration-200 rounded-cta-button-radius border border-secondary-200 hover:bg-secondary-100 hover:text-secondary-900 focus:outline-none focus:ring-2 focus:ring-secondary-300 focus:ring-offset-2"
+						>
+							<span class="sr-only">Open main menu</span>
+							<svg class="expanded-icon h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+							</svg>
+							<svg class="collapsed-icon h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12H21M3 6H21M3 18H21"></path>
+							</svg>
+						</summary>
+						<div class="absolute z-10 w-full bg-white shadow-lg left-0 mt-2">
+							<div class="nav-link-items-mobile px-4 pb-4 sm:px-6">
+                <%
+                  navigation = Settings::Navigation.find(@presenter.get("navigation.id"))
+                  links = navigation.links.map do |link|
+                    {
+                      text: link.name,
+                      href: link.link_kind == "external_link" ? link.external_link : (link.generated_page_type ? "/#{link.generated_page_type}" : "#"),
+                      event: "Clicked Link: #{link.link_kind == "external_link" ? link.external_link : link.generated_page_type}",
+                      external: link.link_kind == "external_link"
+                    }
+                  end
+                %>
+                
+                <div class="-mx-2 space-y-1 pt-4">
+                  <% links.each do |link| %>
+                    <a
+                      href="<%= link[:href] %>"
+                      class="nav-link nav-link-left <%= link[:external] ? 'nav-link-EXTERNAL_LINK' : 'nav-link-GENERATED_PAGE' %> group flex items-center text-base rounded-cta-button-radius px-3 py-1.5 hover:bg-secondary-100 font-medium text-secondary-500 hover:text-secondary-900 focus:ring-secondary-900"
+                      data-umami-event="<%= link[:event] %>"
+                      data-umami-href="<%= link[:href] %>"
+                      <%= link[:external] ? 'target="_blank" rel="noopener"' : '' %>
+                    >
+                      <%= link[:text] %>
+                      <% if link[:external] %>
+                        <svg class="external-link-icon h-5 w-5 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M7 17L17 7M17 7H7M17 7V17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                      <% end %>
+                    </a>
+                  <% end %>
+                </div>
+							</div>
+						</div>
+					</details>
+				</div>
+			</div>
+		</div>
+	</div>
 </header>
