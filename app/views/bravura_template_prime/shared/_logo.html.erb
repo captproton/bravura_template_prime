@@ -12,14 +12,14 @@
   <%= link_to logo_link, class: "logo flex items-center", target: open_logo_link_in_same_tab ? "_self" : "_blank", rel: "noopener", data: { umami_event: "Clicked Logo", umami_href: logo_link } do %>
     <% if logo_image.present? && !hide_logo_image %>
       <%= image_tag(
-        url_for(logo_image.variant(resize_to_limit: [1200, nil])),
-        alt: "logo for #{@presenter.get("general.publication_name")}",
-        srcset: "#{url_for(logo_image.variant(resize_to_limit: [480, nil]))} 480w,
-                 #{url_for(logo_image.variant(resize_to_limit: [800, nil]))} 800w,
-                 #{url_for(logo_image.variant(resize_to_limit: [1200, nil]))} 1200w",
-        sizes: "(max-width: 599px) 480px, (max-width: 1199px) 800px, 1200px",
-        class: "h-8 w-auto mr-1"
-      ) %>
+              url_for(logo_image.variant(resize_to_limit: [150, 150])),
+              alt: "logo for #{@presenter.get("general.publication_name")}",
+              srcset: "#{url_for(logo_image.variant(resize_to_limit: [50, 50]))} 50w,
+                       #{url_for(logo_image.variant(resize_to_limit: [100, 100]))} 100w,
+                       #{url_for(logo_image.variant(resize_to_limit: [150, 150]))} 150w",
+              sizes: "(max-width: 599px) 50px, (max-width: 1199px) 100px, 150px",
+              class: "h-8 w-auto mr-1"
+            ) %>
     <% end %>
     <% unless hide_logo_text %>
       <span class="text-2xl font-bold tracking-tight text-secondary-900">
