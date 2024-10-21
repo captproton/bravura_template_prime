@@ -24,7 +24,7 @@ gem "meta-tags", "~> 2.22"
 group :development, :test do
   gem "rspec-rails", "~> 6.1.3"
   gem "factory_bot_rails", "~> 6.4.3"
-  gem "faker", "~> 3.4.2"
+  gem "faker", "~> 3.5.1"
   gem "capybara", "~> 3.40.0"
   gem "database_cleaner-active_record", "~> 2.2"
 
